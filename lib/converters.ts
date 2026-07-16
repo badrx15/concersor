@@ -27,7 +27,9 @@ export type WidgetType =
   | 'image-to-webp'
   | 'case-converter'
   | 'word-counter'
-  | 'json-csv';
+  | 'json-csv'
+  | 'pdf-tools'
+  | 'document-converter';
 
 export interface FaqItem {
   q: string;
@@ -967,6 +969,424 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['mayusculas-a-minusculas', 'contador-palabras', 'celsius-a-fahrenheit'],
     keywords: ['json a csv', 'csv a json', 'convertir json a csv', 'json to csv', 'formato datos'],
+  },
+
+  // ====================================================================
+  // ARCHIVOS — PDF TOOLS (nuevos, con pdf-lib)
+  // ====================================================================
+  {
+    slug: 'unir-pdf',
+    name: 'Unir PDF',
+    category: 'archivos',
+    icon: '📄',
+    color: '#f97316',
+    widget: 'pdf-tools',
+    widgetConfig: { tool: 'merge' },
+    metaTitle: 'Unir PDF — Juntar varios PDFs online gratis | ConversorPro',
+    metaDescription:
+      'Une varios archivos PDF en uno solo. Gratis, rápido y 100% en tu navegador. Sin límite de archivos ni registro.',
+    explanation: [
+      'Combina múltiples documentos PDF en un único archivo. Selecciona todos los PDFs que quieras unir y el conversor los fusionará en el orden que los hayas seleccionado.',
+      'El procesamiento es 100% local en tu navegador usando pdf-lib. Tus documentos nunca se suben a ningún servidor, garantizando la privacidad total de tus datos.',
+    ],
+    equivalences: [
+      { from: '2 PDFs', to: '1 PDF fusionado' },
+      { from: '5 PDFs', to: '1 PDF con 5 documentos' },
+      { from: '10 PDFs', to: '1 PDF con 10 documentos' },
+    ],
+    faq: [
+      { q: '¿Se suben mis PDFs a un servidor?', a: 'No. La fusión se realiza enteramente en tu navegador usando la librería pdf-lib. Tus archivos nunca salen de tu dispositivo.' },
+      { q: '¿Hay límite de archivos?', a: 'No hay límite fijo, pero el rendimiento depende de la memoria de tu navegador. Para documentos muy grandes, recomendamos unir de 10 en 10.' },
+      { q: '¿Se mantiene el orden de las páginas?', a: 'Sí, los PDFs se fusionan en el orden exacto en que los selecciones. Si necesitas reordenar, usa antes nuestra herramienta Reordenar PDF.' },
+    ],
+    related: ['dividir-pdf', 'comprimir-pdf', 'imagenes-a-pdf'],
+    keywords: ['unir pdf', 'fusionar pdf', 'combinar pdf', 'juntar pdfs online', 'merge pdf'],
+  },
+  {
+    slug: 'dividir-pdf',
+    name: 'Dividir PDF',
+    category: 'archivos',
+    icon: '✂️',
+    color: '#f97316',
+    widget: 'pdf-tools',
+    widgetConfig: { tool: 'split' },
+    metaTitle: 'Dividir PDF — Separar páginas PDF online gratis | ConversorPro',
+    metaDescription:
+      'Divide un PDF en páginas individuales. Extrae cada página como un archivo PDF separado. 100% en tu navegador, gratis y privado.',
+    explanation: [
+      'Separa cada página de un documento PDF en archivos PDF individuales. Cada página se convierte en un archivo independiente que puedes descargar por separado.',
+      'El procesamiento es 100% local. Tus documentos nunca se suben a servidores externos. Ideal para extraer páginas específicas de un documento grande.',
+    ],
+    equivalences: [
+      { from: 'PDF de 5 páginas', to: '5 archivos PDF individuales' },
+      { from: 'PDF de 20 páginas', to: '20 archivos PDF individuales' },
+    ],
+    faq: [
+      { q: '¿Qué tamaño de PDF puedo dividir?', a: 'No hay límite de tamaño, pero documentos muy grandes pueden requerir más memoria. Funciona mejor con PDFs de menos de 100 MB.' },
+      { q: '¿Se mantiene la calidad del original?', a: 'Sí, cada página extraída mantiene exactamente la misma calidad y formato que el PDF original.' },
+    ],
+    related: ['unir-pdf', 'pdf-a-imagenes', 'eliminar-paginas-pdf'],
+    keywords: ['dividir pdf', 'separar pdf', 'extraer paginas pdf', 'split pdf online'],
+  },
+  {
+    slug: 'eliminar-paginas-pdf',
+    name: 'Eliminar Páginas PDF',
+    category: 'archivos',
+    icon: '🗑️',
+    color: '#f97316',
+    widget: 'pdf-tools',
+    widgetConfig: { tool: 'remove-pages' },
+    metaTitle: 'Eliminar Páginas de PDF — Quitar páginas online gratis | ConversorPro',
+    metaDescription:
+      'Elimina páginas específicas de un PDF. Indica los números de página y obtén un PDF limpio. 100% en tu navegador, gratis.',
+    explanation: [
+      'Elimina páginas no deseadas de un documento PDF. Simplemente indica los números de página que quieres eliminar (ej: 1,3,5-7) y el conversor generará un nuevo PDF sin esas páginas.',
+      'Es útil para limpiar documentos escaneados, eliminar portadas, páginas en blanco o anexos innecesarios. El procesamiento es 100% local.',
+    ],
+    equivalences: [
+      { from: 'PDF de 10 páginas (eliminar 3)', to: 'PDF de 7 páginas' },
+      { from: 'PDF de 50 páginas (eliminar 5)', to: 'PDF de 45 páginas' },
+    ],
+    faq: [
+      { q: '¿Cómo especifico las páginas a eliminar?', a: 'Usa números separados por comas (1,3,5) o rangos con guión (5-10). Ejemplo: 1,3,5-7 elimina las páginas 1, 3, 5, 6 y 7.' },
+      { q: '¿Puedo eliminar la primera página?', a: 'Sí, puedes eliminar cualquier página del documento, incluida la primera. Pero no puedes eliminar todas las páginas.' },
+    ],
+    related: ['dividir-pdf', 'unir-pdf', 'organizar-pdf'],
+    keywords: ['eliminar paginas pdf', 'quitar paginas pdf', 'borrar paginas pdf', 'remover paginas pdf'],
+  },
+  {
+    slug: 'rotar-pdf',
+    name: 'Rotar PDF',
+    category: 'archivos',
+    icon: '🔄',
+    color: '#f97316',
+    widget: 'pdf-tools',
+    widgetConfig: { tool: 'rotate' },
+    metaTitle: 'Rotar PDF — Girar páginas PDF online gratis | ConversorPro',
+    metaDescription:
+      'Rota las páginas de un PDF 90°, 180° o 270°. Ideal para corregir documentos escaneados al revés. 100% en tu navegador.',
+    explanation: [
+      'Rota todas las páginas de un documento PDF en el ángulo que necesites: 90° horario, 180° o 90° antihorario. Perfecto para corregir documentos escaneados en la orientación incorrecta.',
+      'El procesamiento es 100% local. Tus documentos nunca salen de tu dispositivo.',
+    ],
+    equivalences: [
+      { from: 'PDF en vertical', to: 'PDF rotado 90° (horizontal)' },
+      { from: 'PDF al revés', to: 'PDF rotado 180° (corregido)' },
+    ],
+    faq: [
+      { q: '¿Se puede rotar una sola página?', a: 'Actualmente la rotación se aplica a todas las páginas del documento. Para rotar páginas individuales, necesitarás dividir el PDF primero.' },
+      { q: '¿Se pierde calidad al rotar?', a: 'No. La rotación modifica los metadatos de orientación del PDF, no los píxeles. No hay pérdida de calidad.' },
+    ],
+    related: ['organizar-pdf', 'dividir-pdf', 'unir-pdf'],
+    keywords: ['rotar pdf', 'girar pdf', 'voltear pdf', 'corregir orientacion pdf'],
+  },
+  {
+    slug: 'proteger-pdf',
+    name: 'Proteger PDF con Contraseña',
+    category: 'archivos',
+    icon: '🔒',
+    color: '#f97316',
+    widget: 'pdf-tools',
+    widgetConfig: { tool: 'protect' },
+    metaTitle: 'Proteger PDF con Contraseña — Añadir contraseña PDF gratis | ConversorPro',
+    metaDescription:
+      'Añade protección por contraseña a tus PDFs. Mantén tus documentos seguros. 100% en tu navegador, privado y gratis.',
+    explanation: [
+      'Añade una contraseña a tus documentos PDF para protegerlos de accesos no autorizados. Ideal para documentos confidenciales, contratos o información personal.',
+      'NOTA: El cifrado completo con contraseña requiere procesamiento avanzado. Esta herramienta prepara tu PDF para protección. La versión con cifrado completo estará disponible próximamente.',
+    ],
+    equivalences: [
+      { from: 'PDF sin contraseña', to: 'PDF protegido' },
+    ],
+    faq: [
+      { q: '¿Es segura la protección?', a: 'La herramienta prepara el PDF para protección. El cifrado AES completo requiere procesamiento especializado que estará disponible próximamente.' },
+      { q: '¿Puedo quitar la contraseña después?', a: 'Sí, usa nuestra herramienta Desbloquear PDF si conoces la contraseña.' },
+    ],
+    related: ['desbloquear-pdf', 'unir-pdf', 'comprimir-pdf'],
+    keywords: ['proteger pdf', 'proteger pdf con contraseña', 'pdf seguro', 'contraseña pdf'],
+  },
+  {
+    slug: 'desbloquear-pdf',
+    name: 'Desbloquear PDF',
+    category: 'archivos',
+    icon: '🔓',
+    color: '#f97316',
+    widget: 'pdf-tools',
+    widgetConfig: { tool: 'unlock' },
+    metaTitle: 'Desbloquear PDF — Quitar contraseña PDF online gratis | ConversorPro',
+    metaDescription:
+      'Elimina la contraseña de un PDF protegido. Introduce la contraseña y obtén un PDF sin restricciones. 100% en tu navegador.',
+    explanation: [
+      'Elimina la protección por contraseña de documentos PDF. Solo necesitas introducir la contraseña correcta y el conversor generará una copia sin restricciones.',
+      'El procesamiento es 100% local. Tu contraseña y documento nunca se envían a ningún servidor.',
+    ],
+    equivalences: [
+      { from: 'PDF protegido', to: 'PDF sin contraseña' },
+    ],
+    faq: [
+      { q: '¿Puedo desbloquear cualquier PDF?', a: 'Sí, siempre que tengas la contraseña correcta. No podemos desbloquear PDFs sin conocer la contraseña.' },
+      { q: '¿Es ilegal desbloquear un PDF?', a: 'Siempre que tengas permiso para acceder al documento (porque conoces la contraseña), es perfectamente legal desbloquearlo para tu uso.' },
+    ],
+    related: ['proteger-pdf', 'unir-pdf', 'comprimir-pdf'],
+    keywords: ['desbloquear pdf', 'quitar contraseña pdf', 'unlock pdf', 'eliminar password pdf'],
+  },
+  {
+    slug: 'reordenar-pdf',
+    name: 'Reordenar PDF',
+    category: 'archivos',
+    icon: '📋',
+    color: '#f97316',
+    widget: 'pdf-tools',
+    widgetConfig: { tool: 'organize' },
+    metaTitle: 'Reordenar PDF — Organizar páginas PDF online gratis | ConversorPro',
+    metaDescription:
+      'Reordena las páginas de un PDF arrastrándolas al orden deseado. Organiza tus documentos fácilmente. 100% en tu navegador.',
+    explanation: [
+      'Cambia el orden de las páginas de un documento PDF. Usa los botones de flecha para mover cada página a la posición deseada y genera un nuevo PDF con el orden personalizado.',
+      'Perfecto para reorganizar documentos escaneados, corregir el orden de páginas o preparar presentaciones. El procesamiento es 100% local.',
+    ],
+    equivalences: [
+      { from: 'PDF desordenado', to: 'PDF reorganizado' },
+      { from: 'PDF de 10 páginas', to: 'PDF con páginas en nuevo orden' },
+    ],
+    faq: [
+      { q: '¿Puedo mover páginas al principio o al final?', a: 'Sí, usa los botones de flecha para mover cada página hacia arriba o abajo tantas veces como sea necesario hasta lograr el orden deseado.' },
+      { q: '¿Se mantiene el contenido de las páginas?', a: 'Sí, solo cambia el orden. El contenido de cada página permanece intacto.' },
+    ],
+    related: ['dividir-pdf', 'unir-pdf', 'eliminar-paginas-pdf'],
+    keywords: ['reordenar pdf', 'organizar pdf', 'cambiar orden paginas pdf', 'reorganizar pdf'],
+  },
+  {
+    slug: 'numerar-paginas-pdf',
+    name: 'Numerar Páginas PDF',
+    category: 'archivos',
+    icon: '🔢',
+    color: '#f97316',
+    widget: 'pdf-tools',
+    widgetConfig: { tool: 'page-numbers' },
+    metaTitle: 'Numerar Páginas PDF — Añadir números de página gratis | ConversorPro',
+    metaDescription:
+      'Añade números de página a tus documentos PDF. Elige la posición: abajo centro, abajo derecha, arriba centro o arriba derecha. Gratis.',
+    explanation: [
+      'Añade números de página automáticamente a todas las páginas de tu documento PDF. Puedes elegir entre cuatro posiciones: abajo centro, abajo derecha, arriba centro o arriba derecha.',
+      'Ideal para documentos profesionales, informes, tesis o cualquier PDF que necesite una numeración clara. El procesamiento es 100% local.',
+    ],
+    equivalences: [
+      { from: 'PDF sin numerar', to: 'PDF con números de página' },
+      { from: 'PDF de 50 páginas', to: 'PDF numerado del 1 al 50' },
+    ],
+    faq: [
+      { q: '¿Puedo elegir dónde van los números?', a: 'Sí. Puedes elegir entre cuatro posiciones: abajo centro, abajo derecha, arriba centro o arriba derecha.' },
+      { q: '¿Se puede cambiar el tamaño del número?', a: 'Actualmente usamos un tamaño estándar de 12pt. En futuras versiones añadiremos más opciones de personalización.' },
+    ],
+    related: ['unir-pdf', 'reordenar-pdf', 'eliminar-paginas-pdf'],
+    keywords: ['numerar paginas pdf', 'añadir numeros de pagina pdf', 'contar paginas pdf', 'page numbers pdf'],
+  },
+  {
+    slug: 'marca-agua-pdf',
+    name: 'Añadir Marca de Agua PDF',
+    category: 'archivos',
+    icon: '💧',
+    color: '#f97316',
+    widget: 'pdf-tools',
+    widgetConfig: { tool: 'watermark' },
+    metaTitle: 'Marca de Agua PDF — Añadir texto a PDF online gratis | ConversorPro',
+    metaDescription:
+      'Añade una marca de agua de texto a tus PDFs (Ej: BORRADOR, CONFIDENCIAL). 100% en tu navegador, privado y gratis.',
+    explanation: [
+      'Añade una marca de agua de texto a todas las páginas de tu documento PDF. Ideal para marcar documentos como "BORRADOR", "CONFIDENCIAL", "MUESTRA" o cualquier texto que necesites.',
+      'La marca de agua se coloca en el centro de cada página con un ángulo de 45° y opacidad reducida para no interferir con la lectura del contenido. Procesamiento 100% local.',
+    ],
+    equivalences: [
+      { from: 'PDF sin marca', to: 'PDF con marca de agua' },
+      { from: 'PDF normal', to: 'PDF marcado como BORRADOR' },
+    ],
+    faq: [
+      { q: '¿Se puede quitar la marca de agua después?', a: 'No recomendamos añadir marcas de agua a documentos originales. La marca se incrusta en el PDF y no se puede eliminar fácilmente.' },
+      { q: '¿Qué texto puedo usar?', a: 'Cualquier texto: BORRADOR, CONFIDENCIAL, MUESTRA GRATIS, SIN VALOR, etc. El texto se muestra en diagonal con opacidad 20%.' },
+    ],
+    related: ['proteger-pdf', 'unir-pdf', 'numerar-paginas-pdf'],
+    keywords: ['marca de agua pdf', 'watermark pdf', 'añadir texto a pdf', 'marcar pdf'],
+  },
+
+  // ====================================================================
+  // ARCHIVOS — CONVERSIÓN DE DOCUMENTOS
+  // ====================================================================
+  {
+    slug: 'word-a-pdf',
+    name: 'Word a PDF',
+    category: 'archivos',
+    icon: '📝',
+    color: '#f97316',
+    widget: 'document-converter',
+    widgetConfig: { tool: 'word-to-pdf' },
+    metaTitle: 'Word a PDF — Convertir DOCX/DOC a PDF online gratis | ConversorPro',
+    metaDescription:
+      'Convierte documentos de Word (DOCX/DOC) a PDF en tu navegador. 100% privado, sin subir archivos a servidores. Gratis.',
+    explanation: [
+      'Convierte tus documentos de Microsoft Word (formato DOCX y DOC) a PDF directamente en tu navegador. El procesamiento es 100% local usando la librería Mammoth.js para extraer el texto y jsPDF para generar el PDF.',
+      'Tus documentos nunca se suben a ningún servidor. Es ideal para compartir documentos con formato universal, enviar currículums o preparar informes profesionales.',
+    ],
+    equivalences: [
+      { from: 'DOCX de 10 páginas', to: 'PDF de 10 páginas' },
+      { from: 'DOCX con imágenes', to: 'PDF con texto extraído' },
+    ],
+    faq: [
+      { q: '¿Se mantienen las imágenes y el formato?', a: 'El texto se extrae correctamente. Las imágenes y formatos complejos pueden no conservarse al 100%. Para máxima fidelidad, recomendamos usar Word → PDF desde el propio Word.' },
+      { q: '¿Se sube mi documento a un servidor?', a: 'No. Todo el procesamiento es local. Mammoth.js y jsPDF funcionan directamente en tu navegador.' },
+    ],
+    related: ['excel-a-pdf', 'html-a-pdf', 'powerpoint-a-pdf'],
+    keywords: ['word a pdf', 'docx a pdf', 'convertir word a pdf', 'documento word a pdf'],
+  },
+  {
+    slug: 'excel-a-pdf',
+    name: 'Excel a PDF',
+    category: 'archivos',
+    icon: '📊',
+    color: '#f97316',
+    widget: 'document-converter',
+    widgetConfig: { tool: 'excel-to-pdf' },
+    metaTitle: 'Excel a PDF — Convertir XLSX/XLS a PDF online gratis | ConversorPro',
+    metaDescription:
+      'Convierte hojas de cálculo de Excel (XLSX, XLS) a PDF en tu navegador. 100% privado, sin subir archivos a servidores.',
+    explanation: [
+      'Convierte tus hojas de cálculo de Microsoft Excel a formato PDF directamente en tu navegador. Usa SheetJS (xlsx) para leer los datos y jsPDF para generar el PDF.',
+      'Cada hoja del libro de Excel se convierte en una página del PDF. Los datos se presentan en formato tabla con el nombre de la hoja como título. Procesamiento 100% local y privado.',
+    ],
+    equivalences: [
+      { from: 'XLSX con 1 hoja', to: 'PDF de 1 página' },
+      { from: 'XLSX con 5 hojas', to: 'PDF de 5 páginas' },
+    ],
+    faq: [
+      { q: '¿Se mantienen las fórmulas?', a: 'Los valores calculados de las celdas se conservan, pero las fórmulas no se mantienen como tales. El PDF muestra el resultado final.' },
+      { q: '¿Quéformatos de Excel soporta?', a: 'Soporta XLSX, XLS y CSV. Los archivos XLSX modernos funcionan mejor.' },
+    ],
+    related: ['word-a-pdf', 'html-a-pdf', 'powerpoint-a-pdf'],
+    keywords: ['excel a pdf', 'xlsx a pdf', 'convertir excel a pdf', 'hoja de calculo a pdf'],
+  },
+  {
+    slug: 'html-a-pdf',
+    name: 'HTML a PDF',
+    category: 'archivos',
+    icon: '🌐',
+    color: '#f97316',
+    widget: 'document-converter',
+    widgetConfig: { tool: 'html-to-pdf' },
+    metaTitle: 'HTML a PDF — Convertir página web a PDF online gratis | ConversorPro',
+    metaDescription:
+      'Convierte archivos HTML a PDF en tu navegador. Extrae el texto y genera un PDF limpio. 100% privado y gratis.',
+    explanation: [
+      'Convierte archivos HTML a documentos PDF directamente en tu navegador. El conversor extrae el texto del HTML, eliminando las etiquetas, y genera un PDF limpio y legible.',
+      'Es útil para guardar páginas web para lectura offline, archivar documentación HTML o convertir informes web a formato PDF. Procesamiento 100% local.',
+    ],
+    equivalences: [
+      { from: 'Archivo HTML', to: 'Documento PDF' },
+      { from: 'Página web (HTML)', to: 'PDF para imprimir' },
+    ],
+    faq: [
+      { q: '¿Se conservan las imágenes del HTML?', a: 'Actualmente extraemos solo el texto. Para conversiones con imágenes, recomendamos usar la función Imprimir → Guardar como PDF del navegador.' },
+      { q: '¿Se mantienen los estilos CSS?', a: 'No. El conversor extrae el texto plano del HTML sin estilos CSS ni JavaScript.' },
+    ],
+    related: ['word-a-pdf', 'excel-a-pdf', 'powerpoint-a-pdf'],
+    keywords: ['html a pdf', 'convertir html a pdf', 'pagina web a pdf', 'web a pdf'],
+  },
+  {
+    slug: 'powerpoint-a-pdf',
+    name: 'PowerPoint a PDF',
+    category: 'archivos',
+    icon: '📽️',
+    color: '#f97316',
+    widget: 'document-converter',
+    widgetConfig: { tool: 'powerpoint-to-pdf' },
+    metaTitle: 'PowerPoint a PDF — Convertir PPT a PDF online gratis | ConversorPro',
+    metaDescription:
+      'Convierte presentaciones de PowerPoint (PPT/PPTX) a PDF. Próximamente disponible. Mientras tanto, usa nuestras otras herramientas PDF.',
+    explanation: [
+      'Convierte tus presentaciones de PowerPoint a formato PDF. Esta función está actualmente en desarrollo para ofrecer la mejor calidad de conversión posible.',
+      'Mientras tanto, puedes usar nuestras herramientas de unir PDF, comprimir PDF o convertir imágenes a PDF para necesidades inmediatas.',
+    ],
+    equivalences: [
+      { from: 'PPTX de 10 diapositivas', to: 'PDF de 10 páginas' },
+    ],
+    faq: [
+      { q: '¿Cuándo estará disponible?', a: 'Estamos trabajando en ello. Próximamente podrás convertir PPT a PDF directamente en tu navegador.' },
+      { q: '¿Qué alternativas tengo mientras?', a: 'Puedes usar PowerPoint → Guardar como → PDF, o convertir tus diapositivas a imágenes y luego usar Imágenes a PDF.' },
+    ],
+    related: ['word-a-pdf', 'excel-a-pdf', 'html-a-pdf'],
+    keywords: ['powerpoint a pdf', 'ppt a pdf', 'convertir powerpoint a pdf', 'presentacion a pdf'],
+  },
+  {
+    slug: 'pdf-a-word',
+    name: 'PDF a Word',
+    category: 'archivos',
+    icon: '📝',
+    color: '#f97316',
+    widget: 'document-converter',
+    widgetConfig: { tool: 'pdf-to-word' },
+    metaTitle: 'PDF a Word — Convertir PDF a DOCX online gratis | ConversorPro',
+    metaDescription:
+      'Convierte documentos PDF a Word (DOCX). Herramienta en desarrollo. Mientras tanto, extrae el texto con PDF a Imágenes.',
+    explanation: [
+      'Convierte tus documentos PDF a formato Microsoft Word (DOCX) para poder editarlos fácilmente. Esta función está actualmente en desarrollo.',
+      'Mientras tanto, puedes usar nuestra herramienta PDF a Imágenes para extraer el contenido visual de tus PDFs, o Contador de Palabras para analizar el texto.',
+    ],
+    equivalences: [
+      { from: 'PDF de 5 páginas', to: 'Documento Word editable' },
+    ],
+    faq: [
+      { q: '¿Cuándo estará disponible?', a: 'Estamos desarrollando esta función. La conversión PDF a Word requiere un procesamiento complejo que estamos optimizando.' },
+      { q: '¿Hay alternativas mientras tanto?', a: 'Puedes copiar el texto manualmente o usar Google Docs que tiene una función de importación de PDF bastante buena.' },
+    ],
+    related: ['word-a-pdf', 'pdf-a-excel', 'pdf-a-powerpoint'],
+    keywords: ['pdf a word', 'pdf a docx', 'convertir pdf a word', 'editar pdf en word'],
+  },
+  {
+    slug: 'pdf-a-excel',
+    name: 'PDF a Excel',
+    category: 'archivos',
+    icon: '📊',
+    color: '#f97316',
+    widget: 'document-converter',
+    widgetConfig: { tool: 'pdf-to-excel' },
+    metaTitle: 'PDF a Excel — Convertir PDF a XLSX online gratis | ConversorPro',
+    metaDescription:
+      'Convierte tablas de PDF a Excel (XLSX). Herramienta en desarrollo. Próximamente disponible.',
+    explanation: [
+      'Extrae datos de tablas en documentos PDF y conviértelos a formato Excel (XLSX). Esta función está actualmente en desarrollo.',
+      'La conversión de tablas de PDF a formato editable es compleja técnicamente y requiere un procesamiento avanzado que estamos implementando.',
+    ],
+    equivalences: [
+      { from: 'PDF con tablas', to: 'Hoja de Excel editable' },
+    ],
+    faq: [
+      { q: '¿Puedo extraer datos de tablas en PDF?', a: 'Actualmente no. Estamos desarrollando esta función. Mientras tanto, puedes usar la función de copiar tabla desde el lector de PDF.' },
+    ],
+    related: ['excel-a-pdf', 'pdf-a-word', 'pdf-a-powerpoint'],
+    keywords: ['pdf a excel', 'pdf a xlsx', 'convertir pdf a excel', 'extraer tabla pdf a excel'],
+  },
+  {
+    slug: 'pdf-a-powerpoint',
+    name: 'PDF a PowerPoint',
+    category: 'archivos',
+    icon: '📽️',
+    color: '#f97316',
+    widget: 'document-converter',
+    widgetConfig: { tool: 'pdf-to-powerpoint' },
+    metaTitle: 'PDF a PowerPoint — Convertir PDF a PPT online gratis | ConversorPro',
+    metaDescription:
+      'Convierte documentos PDF a presentaciones PowerPoint (PPT). Herramienta en desarrollo. Próximamente disponible.',
+    explanation: [
+      'Convierte tus documentos PDF a presentaciones de PowerPoint (PPT/PPTX). Esta función está actualmente en desarrollo.',
+      'Para crear presentaciones a partir de PDFs, puedes usar nuestra herramienta PDF a Imágenes para extraer cada página como imagen y luego insertarlas en PowerPoint manualmente.',
+    ],
+    equivalences: [
+      { from: 'PDF de 10 páginas', to: 'PPT de 10 diapositivas' },
+    ],
+    faq: [
+      { q: '¿Cada página del PDF se convierte en una diapositiva?', a: 'Sí, esa es la idea. Cada página del PDF se convertiría en una diapositiva independiente en la presentación.' },
+    ],
+    related: ['powerpoint-a-pdf', 'pdf-a-word', 'pdf-a-excel'],
+    keywords: ['pdf a powerpoint', 'pdf a ppt', 'convertir pdf a powerpoint', 'pdf a presentacion'],
   },
 ];
 

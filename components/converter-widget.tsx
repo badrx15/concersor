@@ -12,6 +12,8 @@ import { CompressPdfWidget } from './widgets/compress-pdf';
 import { CaseConverterWidget } from './widgets/case-converter';
 import { WordCounterWidget } from './widgets/word-counter';
 import { JsonCsvWidget } from './widgets/json-csv';
+import { PdfToolsWidget } from './widgets/pdf-tools';
+import { DocumentConverterWidget } from './widgets/document-converter';
 
 interface Props {
   converter: Converter;
@@ -41,6 +43,10 @@ export function ConverterWidget({ converter }: Props) {
       return <WordCounterWidget />;
     case 'json-csv':
       return <JsonCsvWidget />;
+    case 'pdf-tools':
+      return <PdfToolsWidget tool={(converter.widgetConfig?.tool as any) || 'merge'} />;
+    case 'document-converter':
+      return <DocumentConverterWidget tool={(converter.widgetConfig?.tool as any) || 'word-to-pdf'} />;
     default:
       return <p className="text-slate-400">Widget no disponible todavía.</p>;
   }
