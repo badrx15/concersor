@@ -64,6 +64,7 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} h-full antialiased`}>
       <head>
         <AdSenseScript />
+        <meta name="google-site-verification" content="googleef6fe5ffa981a5fe" />
       </head>
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-100 font-sans">
         <Navbar />
