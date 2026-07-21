@@ -29,7 +29,11 @@ export type WidgetType =
   | 'word-counter'
   | 'json-csv'
   | 'pdf-tools'
-  | 'document-converter';
+  | 'document-converter'
+  | 'age-calculator'
+  | 'qr-generator'
+  | 'timezone-converter'
+  | 'numbers-to-words';
 
 export interface FaqItem {
   q: string;
@@ -1387,6 +1391,123 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['powerpoint-a-pdf', 'pdf-a-word', 'pdf-a-excel'],
     keywords: ['pdf a powerpoint', 'pdf a ppt', 'convertir pdf a powerpoint', 'pdf a presentacion'],
+  },
+
+  // ====================================================================
+  // HERRAMIENTAS ÚTILES — Calculadoras, generadores y utilidades
+  // ====================================================================
+  {
+    slug: 'calculadora-edad',
+    name: 'Calculadora de Edad',
+    category: 'texto',
+    icon: '🎂',
+    color: '#f43f5e',
+    widget: 'age-calculator',
+    metaTitle: 'Calculadora de Edad Exacta Online — Gratis | ConversorPro',
+    metaDescription:
+      'Calcula tu edad exacta en años, meses, días, horas, minutos y segundos. Descubre tu signo zodiacal, generación y días hasta tu próximo cumpleaños. Gratis.',
+    explanation: [
+      'Calcula tu edad exacta al segundo. Introduce tu fecha de nacimiento y el contador en vivo muestra tu edad precisa en años, meses, días, horas, minutos y segundos.',
+      'Además de la edad cronológica, obtén datos curiosos como tu signo zodiacal, tu generación (Baby Boomer, Millennial, Gen Z, Alpha), los días totales que has vivido y los días que faltan para tu próximo cumpleaños.',
+      'El procesamiento es 100% local en tu navegador. Tu fecha de nacimiento nunca se envía a ningún servidor.',
+    ],
+    equivalences: [
+      { from: '30 años', to: '≈ 10,957 días vividos' },
+      { from: '50 años', to: '≈ 18,262 días vividos' },
+      { from: '18 años', to: '6,575 días vividos' },
+    ],
+    faq: [
+      { q: '¿La calculadora es precisa?', a: 'Sí. Calcula la edad exacta al segundo, teniendo en cuenta años bisiestos y la diferencia exacta entre fechas.' },
+      { q: '¿Se guarda mi fecha de nacimiento?', a: 'No. Todo el cálculo ocurre en tu navegador. No se envía ni almacena ninguna información.' },
+      { q: '¿Qué es la generación Millennial?', a: 'Los Millennials (Generación Y) son las personas nacidas entre 1981 y 1996. La generación Z nació entre 1997 y 2012, y la Generación Alpha desde 2013.' },
+    ],
+    related: ['conversor-zona-horaria', 'numeros-a-letras', 'contador-palabras'],
+    keywords: ['calculadora de edad', 'calcular edad', 'cuantos años tengo', 'edad exacta', 'calculadora años meses dias'],
+  },
+  {
+    slug: 'generador-qr',
+    name: 'Generador QR',
+    category: 'texto',
+    icon: '📱',
+    color: '#10b981',
+    widget: 'qr-generator',
+    metaTitle: 'Generador de Códigos QR Online Gratis | ConversorPro',
+    metaDescription:
+      'Genera códigos QR personalizados a partir de texto, URLs y más. Elige color, tamaño y descarga en PNG. Gratis y sin registro.',
+    explanation: [
+      'Genera códigos QR personalizados al instante. Introduce cualquier texto o URL y obtén un código QR listo para descargar en formato PNG.',
+      'Puedes personalizar los colores de frente y fondo, y elegir el tamaño de 128 a 1024 píxeles. El código se genera en tu navegador sin enviar datos a ningún servidor.',
+      'Los códigos QR se usan para compartir enlaces, información de contacto, WiFi, menús de restaurantes y más. Escanea cualquier QR con la cámara de tu móvil.',
+    ],
+    equivalences: [
+      { from: 'URL larga', to: 'QR compacto (hasta 4296 caracteres)' },
+      { from: 'Texto simple', to: 'QR con el texto codificado' },
+    ],
+    faq: [
+      { q: '¿Los QR generados caducan?', a: 'No. Una vez generados, los QR son permanentes. No almacenamos nada en servidores, el QR se genera localmente.' },
+      { q: '¿Se envía mi texto a algún servidor?', a: 'No. La generación del QR es 100% local usando la librería qrcode en tu navegador.' },
+      { q: '¿Puedo cambiar el color del QR?', a: 'Sí. Puedes personalizar el color de frente y fondo. Recomendamos mantener alto contraste para mejor escaneabilidad.' },
+    ],
+    related: ['numeros-a-letras', 'mayusculas-a-minusculas', 'json-a-csv'],
+    keywords: ['generador qr', 'codigo qr', 'crear qr', 'qr code generator', 'qr online gratis'],
+  },
+  {
+    slug: 'conversor-zona-horaria',
+    name: 'Conversor de Zona Horaria',
+    category: 'unidades',
+    icon: '🕐',
+    color: '#8b5cf6',
+    widget: 'timezone-converter',
+    metaTitle: 'Conversor de Zona Horaria — Hora mundial online gratis | ConversorPro',
+    metaDescription:
+      'Convierte la hora entre zonas horarias de todo el mundo. Compatible con husos horarios IANA. Gratis y sin registro.',
+    explanation: [
+      'Convierte la hora entre cualquier par de zonas horarias del mundo. Selecciona la fecha, hora, zona de origen y zona de destino para ver la equivalencia exacta.',
+      'Soporta todos los husos horarios IANA (más de 500 zonas), incluyendo horario de verano automático. La conversión respeta los cambios estacionales y las reglas de cada región.',
+      'Ideal para coordinar reuniones internacionales, llamadas con familiares en el extranjero o planificar viajes.',
+    ],
+    equivalences: [
+      { from: 'España (CET) → Nueva York (EST)', to: '-6 horas' },
+      { from: 'España (CET) → Tokio (JST)', to: '+7 horas' },
+      { from: 'España (CET) → Londres (GMT)', to: '-1 hora' },
+    ],
+    faq: [
+      { q: '¿Se ajusta automáticamente al horario de verano?', a: 'Sí. Usamos la base de datos IANA que incluye todas las reglas de horario de verano del mundo.' },
+      { q: '¿Cuántas zonas horarias soporta?', a: 'Soporta más de 500 zonas horarias IANA de todo el mundo, incluyendo zonas con diferencias de 30 y 45 minutos.' },
+      { q: '¿Qué países tienen diferencia de 30 minutos?', a: 'India (UTC+5:30), Irán (UTC+3:30), Afganistán (UTC+4:30), Venezuela (UTC-4), entre otros.' },
+    ],
+    related: ['calculadora-edad', 'celsius-a-fahrenheit', 'kilometros-a-millas'],
+    keywords: ['conversor zona horaria', 'hora mundial', 'huso horario', 'convertir hora', 'diferencia horaria'],
+  },
+  {
+    slug: 'numeros-a-letras',
+    name: 'Números a Letras',
+    category: 'texto',
+    icon: '🔢',
+    color: '#f59e0b',
+    widget: 'numbers-to-words',
+    metaTitle: 'Números a Letras — Conversor de números a texto en español | ConversorPro',
+    metaDescription:
+      'Convierte números a letras en español. Escribe cualquier número en texto: desde cero hasta billones. Modo euros incluido. Gratis y sin registro.',
+    explanation: [
+      'Convierte cualquier número a su representación en letras en español. Soporta desde cero hasta 999 mil millones, con opción de forma femenina y formato de euros.',
+      'Ejemplo: 1234 se convierte en «mil doscientos treinta y cuatro». En modo euros: «mil doscientos treinta y cuatro euros con 00 céntimos».',
+      'Ideal para redactar cheques, contratos, facturas, documentos legales o cualquier texto que requiera escribir números en palabras.',
+    ],
+    equivalences: [
+      { from: '0', to: 'cero' },
+      { from: '21', to: 'veintiuno' },
+      { from: '100', to: 'cien' },
+      { from: '1999', to: 'mil novecientos noventa y nueve' },
+      { from: '1000000', to: 'un millón' },
+    ],
+    faq: [
+      { q: '¿Hasta qué número llega?', a: 'Soporta números desde 0 hasta 999 mil millones (999,999,999,999). Para números más grandes, puedes usar la notación científica.' },
+      { q: '¿Qué es la forma femenina?', a: 'Algunos números cambian según el género: «un» → «una», «veintiún» → «veintiuna». Ejemplo: «veintiuna personas».' },
+      { q: '¿Cómo se escriben los números con decimales?', a: 'Puedes introducir decimales con punto (ej: 1234.56). En modo euros se convierten en «X euros con Y céntimos».' },
+    ],
+    related: ['mayusculas-a-minusculas', 'contador-palabras', 'calculadora-edad'],
+    keywords: ['numeros a letras', 'escribir numeros en palabras', 'numeros a texto', 'convertir numero a letras', 'numeros en español'],
   },
 ];
 

@@ -14,6 +14,10 @@ import { WordCounterWidget } from './widgets/word-counter';
 import { JsonCsvWidget } from './widgets/json-csv';
 import { PdfToolsWidget } from './widgets/pdf-tools';
 import { DocumentConverterWidget } from './widgets/document-converter';
+import { AgeCalculatorWidget } from './widgets/age-calculator';
+import { QrGeneratorWidget } from './widgets/qr-generator';
+import { TimezoneConverterWidget } from './widgets/timezone-converter';
+import { NumbersToWordsWidget } from './widgets/numbers-to-words';
 
 interface Props {
   converter: Converter;
@@ -47,6 +51,14 @@ export function ConverterWidget({ converter }: Props) {
       return <PdfToolsWidget tool={(converter.widgetConfig?.tool as any) || 'merge'} />;
     case 'document-converter':
       return <DocumentConverterWidget tool={(converter.widgetConfig?.tool as any) || 'word-to-pdf'} />;
+    case 'age-calculator':
+      return <AgeCalculatorWidget />;
+    case 'qr-generator':
+      return <QrGeneratorWidget />;
+    case 'timezone-converter':
+      return <TimezoneConverterWidget />;
+    case 'numbers-to-words':
+      return <NumbersToWordsWidget />;
     default:
       return <p className="text-slate-400">Widget no disponible todavía.</p>;
   }
