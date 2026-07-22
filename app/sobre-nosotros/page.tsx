@@ -4,8 +4,14 @@ import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Sobre nosotros — ConversorPro',
-  description: 'Por qué construimos conversores online 100% gratis, privados y sin registro.',
+  description: 'Descubre por qué construimos conversores online 100% gratis, privados y sin registro. Conoce nuestra misión, tecnología y valores.',
+  keywords: ['sobre conversorpro', 'equipo', 'mision', 'conversores privados', 'tecnologia next.js'],
   alternates: { canonical: '/sobre-nosotros' },
+  openGraph: {
+    title: 'Sobre nosotros — ConversorPro',
+    description: 'Conoce nuestro proyecto de conversores online 100% gratis, privados y sin registro.',
+    url: `${siteConfig.url}/sobre-nosotros`,
+  },
 };
 
 export default function AboutPage() {

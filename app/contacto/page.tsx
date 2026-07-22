@@ -3,8 +3,14 @@ import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Contacto — ConversorPro',
-  description: 'Ponte en contacto con el equipo de ConversorPro. Reporta bugs, sugiere herramientas o envía feedback.',
+  description: 'Ponte en contacto con el equipo de ConversorPro. Reporta bugs, sugiere herramientas nuevas o envía feedback. Respondemos en 24-48h.',
+  keywords: ['contacto conversorpro', 'sugerir conversor', 'reportar bug', 'feedback herramientas'],
   alternates: { canonical: '/contacto' },
+  openGraph: {
+    title: 'Contacto — ConversorPro',
+    description: 'Contacta con nosotros para sugerencias, bugs o feedback.',
+    url: `${siteConfig.url}/contacto`,
+  },
 };
 
 export default function ContactPage() {

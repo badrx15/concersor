@@ -8,7 +8,23 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Conversores online gratis — unidades, divisas, archivos | ConversorPro',
   description: siteConfig.description,
+  keywords: [
+    'conversor online gratis',
+    'convertir unidades online',
+    'conversor de divisas gratis',
+    'herramientas online',
+    'convertir archivos gratis',
+    'conversor de moneda',
+    'convertir pdf online',
+    'conversor de temperatura',
+  ],
   alternates: { canonical: '/' },
+  openGraph: {
+    title: 'Conversores online gratis — unidades, divisas, archivos y texto',
+    description: siteConfig.description,
+    url: siteConfig.url,
+    type: 'website',
+  },
 };
 
 const POPULAR_SLUGS = [
@@ -58,6 +74,22 @@ export default function HomePage() {
     },
   };
 
+  const organizationLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    email: siteConfig.contactEmail,
+    foundingDate: '2024',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR',
+      description: 'Todas las herramientas son completamente gratuitas',
+    },
+  };
+
   const faqLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -70,7 +102,7 @@ export default function HomePage() {
 
   return (
     <div className="view-fade">
-      <JsonLd data={[websiteLd, faqLd]} />
+      <JsonLd data={[websiteLd, organizationLd, faqLd]} />
 
       {/* Hero */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
@@ -84,8 +116,11 @@ export default function HomePage() {
             <span className="bg-gradient-to-r from-brand-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"> online gratis</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto">
-            Convierte unidades, divisas, archivos y texto — gratis, sin registro.
+            Convierte <strong className="text-white">unidades, divisas, archivos y texto</strong> — gratis, sin registro.
             <strong className="text-white"> Tus archivos nunca salen de tu navegador.</strong>
+          </p>
+          <p className="mt-3 text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
+            Longitud, peso, temperatura, volumen, velocidad · EUR, USD, GBP, JPY · PDF, JPG, PNG, WebP · Mayúsculas, palabras, JSON, CSV
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link

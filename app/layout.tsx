@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     default: `${siteConfig.name} — Conversores online gratis`,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
-  keywords: ['conversor', 'convertir', 'online', 'gratis', 'unidades', 'divisas', 'pdf', 'imagen'],
+  description: siteConfig.longDescription || siteConfig.description,
+  keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
       follow: true,
       'max-image-preview': 'large',
       'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
   alternates: {
@@ -46,12 +47,31 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     title: `${siteConfig.name} — Conversores online gratis`,
-    description: siteConfig.description,
+    description: siteConfig.longDescription || siteConfig.description,
+    countryName: 'España',
+    emails: [siteConfig.contactEmail],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${siteConfig.name} — Conversores online gratis`,
     description: siteConfig.description,
+    creator: siteConfig.social?.twitter,
+  },
+  verification: {
+    google: 'googleef6fe5ffa981a5fe',
+  },
+  appleWebApp: {
+    capable: true,
+    title: siteConfig.shortName,
+    statusBarStyle: 'black-translucent',
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+  other: {
+    'google-adsense-account': siteConfig.adsenseClient,
   },
 };
 
@@ -64,7 +84,6 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} h-full antialiased`}>
       <head>
         <AdSenseScript />
-        <meta name="google-site-verification" content="googleef6fe5ffa981a5fe" />
       </head>
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-100 font-sans">
         <Navbar />

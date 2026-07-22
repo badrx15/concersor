@@ -17,13 +17,15 @@ export function generateMetadata({ params }: { params: Promise<{ id: string }> }
     const { id } = await params;
     const cat = CATEGORIES.find((c) => c.id === id);
     if (!cat) return {};
+    const count = getConvertersByCategory(cat.id).length;
     return {
-      title: `Conversores de ${cat.name} — Gratis | ConversorPro`,
-      description: `${cat.description} ${getConvertersByCategory(cat.id).length} conversores disponibles. Gratis y sin registro.`,
+      title: `Conversores de ${cat.name} — ${count} herramientas online gratis | ConversorPro`,
+      description: `Convierte ${cat.name.toLowerCase()} online gratis. ${cat.description} ${count} herramientas disponibles. Procesamiento 100% en tu navegador, sin registro.`,
+      keywords: [`conversor ${cat.name.toLowerCase()}`, `convertir ${cat.name.toLowerCase()}`, `herramientas ${cat.name.toLowerCase()}`, 'conversor online gratis'],
       alternates: { canonical: `/categoria/${id}` },
       openGraph: {
-        title: `Conversores de ${cat.name}`,
-        description: cat.description,
+        title: `Conversores de ${cat.name} — Gratis y sin registro`,
+        description: `${count} conversores de ${cat.name.toLowerCase()} disponibles. Gratis, sin registro, 100% privado.`,
         url: `${siteConfig.url}/categoria/${id}`,
       },
     };

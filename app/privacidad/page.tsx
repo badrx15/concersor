@@ -4,8 +4,14 @@ import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Política de Privacidad — ConversorPro',
-  description: 'Tus archivos se procesan en tu navegador y nunca se suben a ningún servidor. Política de privacidad completa.',
+  description: 'Tus archivos se procesan en tu navegador y nunca se suben a ningún servidor. Política de privacidad completa sobre cookies, AdSense, Analytics y procesamiento de datos.',
+  keywords: ['privacidad', 'politica privacidad', 'proteccion datos', 'cookies', 'procesamiento local', 'seguridad'],
   alternates: { canonical: '/privacidad' },
+  openGraph: {
+    title: 'Política de Privacidad — ConversorPro',
+    description: 'Tus archivos nunca salen de tu navegador. Conoce nuestra política de privacidad completa.',
+    url: `${siteConfig.url}/privacidad`,
+  },
 };
 
 export default function PrivacyPage() {

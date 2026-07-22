@@ -7,8 +7,14 @@ import { JsonLd } from '@/components/json-ld';
 
 export const metadata: Metadata = {
   title: 'Todos los conversores online gratis | ConversorPro',
-  description: 'Lista completa de conversores: unidades, divisas, archivos y texto. Gratis, sin registro, 100% en tu navegador.',
+  description: 'Lista completa de todos los conversores online: unidades (longitud, peso, temperatura, volumen, velocidad), divisas en vivo, archivos (PDF, imágenes, compresión) y texto (mayúsculas, palabras, JSON, CSV). Gratis, sin registro, 100% privado.',
+  keywords: ['lista conversores', 'todos los conversores', 'convertir online', 'herramientas conversion', 'conversores gratis'],
   alternates: { canonical: '/conversores' },
+  openGraph: {
+    title: 'Todos los conversores online gratis',
+    description: 'Lista completa de todos los conversores disponibles. Gratis, sin registro, 100% en tu navegador.',
+    url: `${siteConfig.url}/conversores`,
+  },
 };
 
 export default function ConversoresPage() {

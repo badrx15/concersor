@@ -1,4 +1,11 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Página no encontrada — ConversorPro',
+  description: 'La página que buscas no existe. Explora nuestros conversores online gratis.',
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (
