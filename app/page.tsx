@@ -206,6 +206,113 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SEO CONTENT — Texto visible rico en keywords para Google */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="prose-seo max-w-4xl mx-auto">
+          <h2 className="text-center text-2xl sm:text-3xl font-bold mb-8 text-white">Conversores online gratis — todo lo que necesitas</h2>
+          
+          <h3>Convierte unidades de medida online y gratis</h3>
+          <p>
+            Nuestro <strong>conversor de unidades online</strong> te permite convertir cualquier medida al instante. 
+            Tanto si necesitas <strong>convertir kilometros a millas</strong> para un viaje por carretera en Estados Unidos, 
+            como si quieres <strong>pasar metros a pies</strong> para calcular la altura de una persona, o 
+            <strong>convertir centimetros a pulgadas</strong> para saber el tamaño de una pantalla, 
+            nuestras herramientas de <strong>conversion de unidades</strong> son rápidas, precisas y funcionan 100% en tu navegador.
+          </p>
+          <p>
+            La <strong>tabla de conversion de unidades</strong> incluida en cada herramienta te muestra las equivalencias más comunes, 
+            como pasar de <strong>kilogramos a libras</strong> para el peso en el gimnasio, 
+            <strong>gramos a onzas</strong> para recetas de cocina americanas, o 
+            <strong>celsius a fahrenheit</strong> para entender el pronóstico del tiempo en países anglosajones. 
+            También puedes <strong>convertir litros a galones</strong> para combustible y 
+            <strong>km/h a mph</strong> para velocidad en carretera.
+          </p>
+
+          <h3>Conversor de divisas en tiempo real</h3>
+          <p>
+            ¿Necesitas <strong>convertir euros a dolares</strong> para un viaje a Estados Unidos? 
+            ¿O quizás <strong>cambiar libras a euros</strong> al hacer compras online en Reino Unido? 
+            Nuestro <strong>conversor de divisas</strong> actualiza las tasas de cambio en tiempo real 
+            para que siempre tengas el <strong>tipo de cambio</strong> más preciso. 
+            Soporta las principales monedas del mundo: <strong>EUR, USD, GBP, JPY, CHF, CAD, AUD, MXN</strong> y muchas más.
+          </p>
+          <p>
+            El <strong>cambio de moneda online</strong> se actualiza periódicamente mediante APIs públicas. 
+            Ya sea que necesites la <strong>cotizacion del dolar</strong>, el 
+            <strong>precio del euro</strong>, o quieras saber a cuánto está el 
+            <strong>cambio de divisas hoy</strong>, nuestra herramienta te da la respuesta al instante.
+          </p>
+
+          <h3>Herramientas para archivos PDF online gratis</h3>
+          <p>
+            Trabaja con documentos PDF sin instalar nada. Puedes <strong>comprimir PDF</strong> para reducir su tamaño 
+            sin perder calidad, <strong>unir PDF</strong> para combinar varios documentos en uno solo, 
+            o <strong>dividir PDF</strong> para extraer páginas específicas. También puedes 
+            <strong>convertir imagenes a PDF</strong> para crear documentos desde tus fotos, 
+            o <strong>pasar PDF a imagenes</strong> para extraer cada página como PNG.
+          </p>
+          <p>
+            ¿Necesitas <strong>proteger PDF con contraseña</strong> para mantener tus documentos seguros? 
+            ¿O <strong>desbloquear PDF</strong> para poder editarlos? 
+            Tenemos herramientas para <strong>reordenar paginas PDF</strong>, 
+            <strong>numerar paginas PDF</strong>, y 
+            añadir <strong>marca de agua PDF</strong>. 
+            También convertimos entre formatos: <strong>Word a PDF</strong>, 
+            <strong>Excel a PDF</strong>, <strong>PowerPoint a PDF</strong>, 
+            <strong>HTML a PDF</strong> y viceversa —
+            <strong>PDF a Word</strong>, <strong>PDF a Excel</strong>, <strong>PDF a PowerPoint</strong>.
+          </p>
+
+          <h3>Convierte imagenes online sin subir archivos</h3>
+          <p>
+            Cambia el formato de tus fotos e imágenes al instante. Puedes 
+            <strong>convertir PNG a JPG</strong> para imágenes más ligeras, 
+            <strong>pasar imagenes a WebP</strong> para optimizar tu web y mejorar los Core Web Vitals, 
+            o <strong>comprimir imagen</strong> para reducir su peso sin perder calidad visible. 
+            Todo el procesamiento es 100% local en tu navegador — tus archivos nunca se suben a ningún servidor.
+          </p>
+
+          <h3>Herramientas de texto y datos</h3>
+          <p>
+            Trabaja con texto y datos de forma eficiente. Convierte entre 
+            <strong>mayusculas y minusculas</strong>, 
+            usa nuestro <strong>contador de palabras y caracteres</strong> para medir la longitud de tu texto, 
+            o <strong>convierte JSON a CSV</strong> (y CSV a JSON) para trabajar con datos estructurados. 
+            Ideal para desarrolladores, escritores, estudiantes y profesionales del marketing digital.
+          </p>
+
+          <h3>Nuevas herramientas útiles</h3>
+          <p>
+            Hemos añadido herramientas muy solicitadas: 
+            <strong>calculadora de edad</strong> que te dice exactamente cuántos años, meses, días, horas, 
+            minutos y segundos has vivido, con datos curiosos como tu signo zodiacal; 
+            <strong>generador de codigos QR</strong> para crear códigos personalizados con colores y 
+            descargarlos en PNG; <strong>conversor de zona horaria</strong> para saber la hora exacta 
+            en cualquier ciudad del mundo; y <strong>numeros a letras</strong> que escribe cualquier 
+            número en español, ideal para cheques, contratos y documentos formales.
+          </p>
+
+          <h3>Privacidad total — sin registro, sin servidores</h3>
+          <p>
+            Todas nuestras <strong>herramientas online gratis</strong> procesan tu información 
+            directamente en tu navegador, usando JavaScript y tecnologías web modernas como 
+            Canvas API, jsPDF, pdf-lib y PDF.js. Tus archivos, textos y datos 
+            <strong>nunca abandonan tu dispositivo</strong>. No necesitas crear una cuenta, 
+            no te pedimos tu email y no guardamos ningún archivo en nuestros servidores. 
+            La única excepción es el conversor de divisas, que consulta una API pública de 
+            tasas de cambio — sin enviar ningún dato personal.
+          </p>
+          <p className="text-sm text-slate-500">
+            Palabras clave relacionadas: conversor online, convertir unidades, conversor de divisas, 
+            conversor pdf, convertir archivos, herramientas online gratis, calculadora online, 
+            conversion de unidades, cambio de moneda, convertir imagen, unir pdf, comprimir pdf, 
+            km a millas, euros a dolares, celsius a fahrenheit, kilos a libras, metros a pies, 
+            png a jpg, mayusculas a minusculas, contador de palabras, json a csv, 
+            calculadora de edad, generador qr, zona horaria, numeros a letras.
+          </p>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-20 bg-slate-900/40 border-y border-slate-800/60">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

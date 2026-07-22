@@ -147,7 +147,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['millas-a-kilometros', 'metros-a-pies', 'cm-a-pulgadas'],
-    keywords: ['kilometros a millas', 'km a mi', 'convertir km a millas', 'conversion kilometros millas'],
+    keywords: ['kilometros a millas', 'km a mi', 'convertir km a millas', 'conversion kilometros millas', 'pasar km a millas', 'cuantas millas son 1 km', 'distancia km a mi', 'calcular millas', 'kilometros a millas calculadora', 'tabla km a millas'],
   },
   {
     slug: 'millas-a-kilometros',
@@ -182,7 +182,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['kilometros-a-millas', 'metros-a-pies', 'cm-a-pulgadas'],
-    keywords: ['millas a kilometros', 'mi a km', 'convertir millas a km'],
+    keywords: ['millas a kilometros', 'mi a km', 'convertir millas a km', 'pasar millas a km', 'cuantos km son 1 milla', 'distancia millas a km', 'calcular kilometros desde millas', 'millas a km calculadora', 'tabla millas a km'],
   },
   {
     slug: 'metros-a-pies',
@@ -217,7 +217,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['kilometros-a-millas', 'cm-a-pulgadas', 'millas-a-kilometros'],
-    keywords: ['metros a pies', 'm a ft', 'convertir metros a pies', 'altura metros a pies'],
+    keywords: ['metros a pies', 'm a ft', 'convertir metros a pies', 'altura metros a pies', 'pasar metros a pies', 'cuantos pies son 1 metro', 'altura en pies', 'metros a pies y pulgadas', 'calculadora altura pies', 'tabla metros a pies'],
   },
   {
     slug: 'cm-a-pulgadas',
@@ -256,7 +256,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['metros-a-pies', 'kilometros-a-millas', 'millas-a-kilometros'],
-    keywords: ['cm a pulgadas', 'centimetros a pulgadas', 'convertir cm a in', 'pantalla pulgadas cm'],
+    keywords: ['cm a pulgadas', 'centimetros a pulgadas', 'convertir cm a in', 'pantalla pulgadas cm', 'pasar cm a pulgadas', 'cuantas pulgadas son 1 cm', 'medir pantalla pulgadas', 'cm a pulgadas calculadora', 'tabla centimetros pulgadas'],
   },
 
   // ====================================================================
@@ -299,7 +299,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['gramos-a-onzas', 'kilometros-a-millas', 'metros-a-pies'],
-    keywords: ['kilos a libras', 'kg a lb', 'convertir kilogramos a libras', 'peso kg a libras'],
+    keywords: ['kilos a libras', 'kg a lb', 'convertir kilogramos a libras', 'peso kg a libras', 'pasar kg a libras', 'cuantas libras son 1 kilo', 'peso en libras', 'kg a lbs calculadora', 'convertir peso kg lb', 'tabla kilos libras'],
   },
   {
     slug: 'gramos-a-onzas',
@@ -335,7 +335,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['kilos-a-libras', 'kilometros-a-millas', 'metros-a-pies'],
-    keywords: ['gramos a onzas', 'g a oz', 'convertir gramos a onzas', 'cocina gramos onzas'],
+    keywords: ['gramos a onzas', 'g a oz', 'convertir gramos a onzas', 'cocina gramos onzas', 'pasar gramos a onzas', 'cuantas onzas son 100 gramos', 'recetas onzas gramos', 'gramos a onzas calculadora', 'medidas cocina onzas'],
   },
 
   // ====================================================================
@@ -379,7 +379,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['fahrenheit-a-celsius', 'celsius-a-kelvin', 'kilometros-a-millas'],
-    keywords: ['celsius a fahrenheit', 'centigrados a fahrenheit', 'convertir °C a °F', 'temperatura celsius fahrenheit'],
+    keywords: ['celsius a fahrenheit', 'centigrados a fahrenheit', 'convertir °C a °F', 'temperatura celsius fahrenheit', 'pasar celsius a fahrenheit', 'formula celsius fahrenheit', 'cuantos fahrenheit son 30 grados', 'temperatura corporal fahrenheit', 'tabla celsius fahrenheit', 'convertir temperatura'],
   },
   {
     slug: 'fahrenheit-a-celsius',
@@ -414,7 +414,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['celsius-a-fahrenheit', 'celsius-a-kelvin', 'kilometros-a-millas'],
-    keywords: ['fahrenheit a celsius', '°F a °C', 'convertir fahrenheit a celsius', 'temperatura fahrenheit celsius'],
+    keywords: ['fahrenheit a celsius', '°F a °C', 'convertir fahrenheit a celsius', 'temperatura fahrenheit celsius', 'pasar fahrenheit a celsius', 'formula fahrenheit celsius', '98.6 fahrenheit a celsius', 'fahrenheit a centigrados', 'tabla fahrenheit celsius', 'convertir fahrenheit'],
   },
   {
     slug: 'celsius-a-kelvin',
@@ -448,7 +448,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['celsius-a-fahrenheit', 'fahrenheit-a-celsius', 'kilometros-a-millas'],
-    keywords: ['celsius a kelvin', '°C a K', 'convertir celsius a kelvin', 'temperatura kelvin'],
+    keywords: ['celsius a kelvin', '°C a K', 'convertir celsius a kelvin', 'temperatura kelvin', 'pasar celsius a kelvin', 'formula celsius kelvin', 'cero absoluto celsius', 'kelvin a celsius', 'temperatura cientifica'],
   },
 
   // ====================================================================
@@ -488,7 +488,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['kilometros-a-millas', 'kilos-a-libras', 'metros-a-pies'],
-    keywords: ['litros a galones', 'L a gal', 'convertir litros a galones', 'volumen litros galones'],
+    keywords: ['litros a galones', 'L a gal', 'convertir litros a galones', 'volumen litros galones', 'pasar litros a galones', 'galon americano', 'cuantos galones son 1 litro', 'convertir volumen', 'tabla litros galones'],
   },
 
   // ====================================================================
@@ -527,7 +527,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['kilometros-a-millas', 'millas-a-kilometros', 'celsius-a-fahrenheit'],
-    keywords: ['kmh a mph', 'km/h a mph', 'convertir km/h a mph', 'velocidad km/h mph'],
+    keywords: ['kmh a mph', 'km/h a mph', 'convertir km/h a mph', 'velocidad km/h mph', 'pasar kmh a mph', '100 kmh a mph', '120 kmh a mph', 'convertir velocidad', 'tabla kmh mph'],
   },
 
   // ====================================================================
@@ -571,7 +571,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['dolares-a-euros', 'conversor-divisas', 'libras-a-euros'],
-    keywords: ['euros a dolares', 'EUR a USD', 'convertir euros a dolares', 'cambio euro dolar'],
+    keywords: ['euros a dolares', 'EUR a USD', 'convertir euros a dolares', 'cambio euro dolar', 'pasar euros a dolares', 'cuantos dolares son 100 euros', 'euro dolar hoy', 'cotizacion euro dolar', 'tipo de cambio euro dolar', 'calculadora euros dolares'],
   },
   {
     slug: 'dolares-a-euros',
@@ -606,7 +606,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['euros-a-dolares', 'conversor-divisas', 'libras-a-euros'],
-    keywords: ['dolares a euros', 'USD a EUR', 'convertir dolares a euros', 'cambio dolar euro'],
+    keywords: ['dolares a euros', 'USD a EUR', 'convertir dolares a euros', 'cambio dolar euro', 'pasar dolares a euros', 'cuantos euros son 100 dolares', 'dolar euro hoy', 'cotizacion dolar euro', 'calculadora dolares euros'],
   },
   {
     slug: 'conversor-divisas',
@@ -641,7 +641,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['euros-a-dolares', 'dolares-a-euros', 'libras-a-euros'],
-    keywords: ['conversor de divisas', 'conversor moneda', 'cambio de moneda', 'tipo de cambio'],
+    keywords: ['conversor de divisas', 'conversor moneda', 'cambio de moneda', 'tipo de cambio', 'convertir divisas', 'conversor moneda internacional', 'cambio de divisas hoy', 'calculadora divisas', 'cotizacion monedas', 'todas las divisas'],
   },
   {
     slug: 'libras-a-euros',
@@ -671,7 +671,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['euros-a-dolares', 'dolares-a-euros', 'conversor-divisas'],
-    keywords: ['libras a euros', 'GBP a EUR', 'convertir libras a euros', 'cambio libra euro'],
+    keywords: ['libras a euros', 'GBP a EUR', 'convertir libras a euros', 'cambio libra euro', 'pasar libras a euros', 'cuantos euros son 100 libras', 'libra esterlina a euro', 'cotizacion libra euro', 'calculadora libras euros'],
   },
 
   // ====================================================================
@@ -711,7 +711,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['imagen-a-webp', 'comprimir-imagen', 'imagenes-a-pdf'],
-    keywords: ['png a jpg', 'convertir png a jpg', 'imagen png a jpg online', 'cambiar formato png a jpg'],
+    keywords: ['png a jpg', 'convertir png a jpg', 'imagen png a jpg online', 'cambiar formato png a jpg', 'pasar png a jpg', 'png a jpg sin perder calidad', 'convertir imagen png', 'png a jpg online gratis', 'formato imagen png jpg'],
   },
   {
     slug: 'imagen-a-webp',
@@ -743,7 +743,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['png-a-jpg', 'comprimir-imagen', 'imagenes-a-pdf'],
-    keywords: ['imagen a webp', 'convertir a webp', 'png a webp', 'jpg a webp', 'optimizar imagenes web'],
+    keywords: ['imagen a webp', 'convertir a webp', 'png a webp', 'jpg a webp', 'optimizar imagenes web', 'pasar imagen a webp', 'webp a png', 'webp a jpg', 'formato webp', 'convertir webp', 'optimizar web vitals'],
   },
   {
     slug: 'comprimir-imagen',
@@ -774,7 +774,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['png-a-jpg', 'imagen-a-webp', 'comprimir-pdf'],
-    keywords: ['comprimir imagen', 'reducir tamaño imagen', 'optimizar imagen online', 'comprimir jpg'],
+    keywords: ['comprimir imagen', 'reducir tamaño imagen', 'optimizar imagen online', 'comprimir jpg', 'comprimir png', 'reducir peso imagen', 'imagen mas ligera', 'comprimir imagen sin perder calidad', 'optimizar fotos web'],
   },
 
   // ====================================================================
@@ -810,7 +810,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['pdf-a-imagenes', 'comprimir-pdf', 'png-a-jpg'],
-    keywords: ['imagenes a pdf', 'jpg a pdf', 'png a pdf', 'convertir imagenes a pdf', 'fotos a pdf'],
+    keywords: ['imagenes a pdf', 'jpg a pdf', 'png a pdf', 'convertir imagenes a pdf', 'fotos a pdf', 'pasar fotos a pdf', 'crear pdf desde imagenes', 'escaneo a pdf', 'varias imagenes a pdf', 'documento fotos pdf'],
   },
   {
     slug: 'pdf-a-imagenes',
@@ -841,7 +841,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['imagenes-a-pdf', 'comprimir-pdf', 'comprimir-imagen'],
-    keywords: ['pdf a imagenes', 'pdf a png', 'pdf a jpg', 'extraer paginas pdf', 'convertir pdf a imagen'],
+    keywords: ['pdf a imagenes', 'pdf a png', 'pdf a jpg', 'extraer paginas pdf', 'convertir pdf a imagen', 'pasar pdf a imagenes', 'pdf a fotos', 'extraer graficos pdf', 'cada pagina pdf como imagen'],
   },
   {
     slug: 'comprimir-pdf',
@@ -872,7 +872,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['comprimir-imagen', 'pdf-a-imagenes', 'imagenes-a-pdf'],
-    keywords: ['comprimir pdf', 'reducir tamaño pdf', 'optimizar pdf online', 'pdf mas ligero'],
+    keywords: ['comprimir pdf', 'reducir tamaño pdf', 'optimizar pdf online', 'pdf mas ligero', 'comprimir pdf sin perder calidad', 'reducir peso pdf', 'pdf comprimido', 'comprimir pdf gratis', 'disminuir tamaño pdf'],
   },
 
   // ====================================================================
@@ -909,7 +909,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['contador-palabras', 'json-a-csv', 'celsius-a-fahrenheit'],
-    keywords: ['mayusculas a minusculas', 'convertir texto a mayusculas', 'title case', 'camelCase', 'conversor de texto'],
+    keywords: ['mayusculas a minusculas', 'convertir texto a mayusculas', 'title case', 'camelCase', 'conversor de texto', 'minusculas a mayusculas', 'pascal case', 'snake case', 'kebab case', 'constant case', 'convertir texto online', 'cambiar mayusculas'],
   },
   {
     slug: 'contador-palabras',
@@ -941,7 +941,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['mayusculas-a-minusculas', 'json-a-csv', 'celsius-a-fahrenheit'],
-    keywords: ['contador de palabras', 'contar palabras', 'contador caracteres', 'palabras y caracteres', 'tiempo de lectura'],
+    keywords: ['contador de palabras', 'contar palabras', 'contador caracteres', 'palabras y caracteres', 'tiempo de lectura', 'contar oraciones', 'contar parrafos', 'analizar texto', 'longitud texto', 'contador letras', 'estadisticas texto'],
   },
   {
     slug: 'json-a-csv',
@@ -972,7 +972,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['mayusculas-a-minusculas', 'contador-palabras', 'celsius-a-fahrenheit'],
-    keywords: ['json a csv', 'csv a json', 'convertir json a csv', 'json to csv', 'formato datos'],
+    keywords: ['json a csv', 'csv a json', 'convertir json a csv', 'json to csv', 'formato datos', 'formatear json', 'validar json', 'pretty print json', 'csv a excel', 'convertir datos', 'json to excel'],
   },
 
   // ====================================================================
@@ -1004,7 +1004,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Se mantiene el orden de las páginas?', a: 'Sí, los PDFs se fusionan en el orden exacto en que los selecciones. Si necesitas reordenar, usa antes nuestra herramienta Reordenar PDF.' },
     ],
     related: ['dividir-pdf', 'comprimir-pdf', 'imagenes-a-pdf'],
-    keywords: ['unir pdf', 'fusionar pdf', 'combinar pdf', 'juntar pdfs online', 'merge pdf'],
+    keywords: ['unir pdf', 'fusionar pdf', 'combinar pdf', 'juntar pdfs online', 'merge pdf', 'unir pdfs gratis', 'combinar varios pdf', 'merge pdf online', 'fusionar documentos pdf', 'unir archivos pdf'],
   },
   {
     slug: 'dividir-pdf',
@@ -1030,7 +1030,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Se mantiene la calidad del original?', a: 'Sí, cada página extraída mantiene exactamente la misma calidad y formato que el PDF original.' },
     ],
     related: ['unir-pdf', 'pdf-a-imagenes', 'eliminar-paginas-pdf'],
-    keywords: ['dividir pdf', 'separar pdf', 'extraer paginas pdf', 'split pdf online'],
+    keywords: ['dividir pdf', 'separar pdf', 'extraer paginas pdf', 'split pdf online', 'partir pdf', 'separar paginas pdf', 'dividir pdf en varios', 'split pdf gratis', 'extraer pagina de pdf'],
   },
   {
     slug: 'eliminar-paginas-pdf',
@@ -1056,7 +1056,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Puedo eliminar la primera página?', a: 'Sí, puedes eliminar cualquier página del documento, incluida la primera. Pero no puedes eliminar todas las páginas.' },
     ],
     related: ['dividir-pdf', 'unir-pdf', 'organizar-pdf'],
-    keywords: ['eliminar paginas pdf', 'quitar paginas pdf', 'borrar paginas pdf', 'remover paginas pdf'],
+    keywords: ['eliminar paginas pdf', 'quitar paginas pdf', 'borrar paginas pdf', 'remover paginas pdf', 'suprimir paginas pdf', 'eliminar pagina pdf online', 'quitar hoja pdf', 'delete page pdf'],
   },
   {
     slug: 'rotar-pdf',
@@ -1082,7 +1082,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Se pierde calidad al rotar?', a: 'No. La rotación modifica los metadatos de orientación del PDF, no los píxeles. No hay pérdida de calidad.' },
     ],
     related: ['organizar-pdf', 'dividir-pdf', 'unir-pdf'],
-    keywords: ['rotar pdf', 'girar pdf', 'voltear pdf', 'corregir orientacion pdf'],
+    keywords: ['rotar pdf', 'girar pdf', 'voltear pdf', 'corregir orientacion pdf', 'rotar pagina pdf', 'girar pdf online', 'cambiar orientacion pdf', 'rotar documento pdf', 'rotate pdf online'],
   },
   {
     slug: 'proteger-pdf',
@@ -1107,7 +1107,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Puedo quitar la contraseña después?', a: 'Sí, usa nuestra herramienta Desbloquear PDF si conoces la contraseña.' },
     ],
     related: ['desbloquear-pdf', 'unir-pdf', 'comprimir-pdf'],
-    keywords: ['proteger pdf', 'proteger pdf con contraseña', 'pdf seguro', 'contraseña pdf'],
+    keywords: ['proteger pdf', 'proteger pdf con contraseña', 'pdf seguro', 'contraseña pdf', 'poner contraseña a pdf', 'encriptar pdf', 'bloquear pdf con clave', 'proteger pdf gratis', 'seguridad pdf online'],
   },
   {
     slug: 'desbloquear-pdf',
@@ -1132,7 +1132,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Es ilegal desbloquear un PDF?', a: 'Siempre que tengas permiso para acceder al documento (porque conoces la contraseña), es perfectamente legal desbloquearlo para tu uso.' },
     ],
     related: ['proteger-pdf', 'unir-pdf', 'comprimir-pdf'],
-    keywords: ['desbloquear pdf', 'quitar contraseña pdf', 'unlock pdf', 'eliminar password pdf'],
+    keywords: ['desbloquear pdf', 'quitar contraseña pdf', 'unlock pdf', 'eliminar password pdf', 'abrir pdf protegido', 'remover contraseña pdf', 'desencriptar pdf online', 'quitar clave pdf', 'unlock pdf gratis'],
   },
   {
     slug: 'reordenar-pdf',
@@ -1158,7 +1158,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Se mantiene el contenido de las páginas?', a: 'Sí, solo cambia el orden. El contenido de cada página permanece intacto.' },
     ],
     related: ['dividir-pdf', 'unir-pdf', 'eliminar-paginas-pdf'],
-    keywords: ['reordenar pdf', 'organizar pdf', 'cambiar orden paginas pdf', 'reorganizar pdf'],
+    keywords: ['reordenar pdf', 'organizar pdf', 'cambiar orden paginas pdf', 'reorganizar pdf', 'mover paginas pdf', 'ordenar pdf online', 'reordenar paginas pdf gratis', 'organizar documento pdf'],
   },
   {
     slug: 'numerar-paginas-pdf',
@@ -1184,7 +1184,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Se puede cambiar el tamaño del número?', a: 'Actualmente usamos un tamaño estándar de 12pt. En futuras versiones añadiremos más opciones de personalización.' },
     ],
     related: ['unir-pdf', 'reordenar-pdf', 'eliminar-paginas-pdf'],
-    keywords: ['numerar paginas pdf', 'añadir numeros de pagina pdf', 'contar paginas pdf', 'page numbers pdf'],
+    keywords: ['numerar paginas pdf', 'añadir numeros de pagina pdf', 'contar paginas pdf', 'page numbers pdf', 'poner numeros a pdf', 'numerar hojas pdf', 'numero de pagina pdf', 'añadir paginacion pdf', 'numerar documento pdf'],
   },
   {
     slug: 'marca-agua-pdf',
@@ -1210,7 +1210,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Qué texto puedo usar?', a: 'Cualquier texto: BORRADOR, CONFIDENCIAL, MUESTRA GRATIS, SIN VALOR, etc. El texto se muestra en diagonal con opacidad 20%.' },
     ],
     related: ['proteger-pdf', 'unir-pdf', 'numerar-paginas-pdf'],
-    keywords: ['marca de agua pdf', 'watermark pdf', 'añadir texto a pdf', 'marcar pdf'],
+    keywords: ['marca de agua pdf', 'watermark pdf', 'añadir texto a pdf', 'marcar pdf', 'poner marca de agua', 'watermark pdf gratis', 'texto en diagonal pdf', 'confidencial pdf', 'marcar documento como borrador'],
   },
 
   // ====================================================================
@@ -1240,7 +1240,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Se sube mi documento a un servidor?', a: 'No. Todo el procesamiento es local. Mammoth.js y jsPDF funcionan directamente en tu navegador.' },
     ],
     related: ['excel-a-pdf', 'html-a-pdf', 'powerpoint-a-pdf'],
-    keywords: ['word a pdf', 'docx a pdf', 'convertir word a pdf', 'documento word a pdf'],
+    keywords: ['word a pdf', 'docx a pdf', 'convertir word a pdf', 'documento word a pdf', 'pasar word a pdf', 'doc a pdf', 'word a pdf gratis', 'convertir docx', 'cambiar formato word a pdf', 'word to pdf online'],
   },
   {
     slug: 'excel-a-pdf',
@@ -1266,7 +1266,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Quéformatos de Excel soporta?', a: 'Soporta XLSX, XLS y CSV. Los archivos XLSX modernos funcionan mejor.' },
     ],
     related: ['word-a-pdf', 'html-a-pdf', 'powerpoint-a-pdf'],
-    keywords: ['excel a pdf', 'xlsx a pdf', 'convertir excel a pdf', 'hoja de calculo a pdf'],
+    keywords: ['excel a pdf', 'xlsx a pdf', 'convertir excel a pdf', 'hoja de calculo a pdf', 'pasar excel a pdf', 'xls a pdf', 'excel a pdf gratis', 'convertir tabla a pdf', 'excel to pdf online'],
   },
   {
     slug: 'html-a-pdf',
@@ -1292,7 +1292,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Se mantienen los estilos CSS?', a: 'No. El conversor extrae el texto plano del HTML sin estilos CSS ni JavaScript.' },
     ],
     related: ['word-a-pdf', 'excel-a-pdf', 'powerpoint-a-pdf'],
-    keywords: ['html a pdf', 'convertir html a pdf', 'pagina web a pdf', 'web a pdf'],
+    keywords: ['html a pdf', 'convertir html a pdf', 'pagina web a pdf', 'web a pdf', 'pasar html a pdf', 'guardar pagina como pdf', 'convertir sitio web a pdf', 'html to pdf online'],
   },
   {
     slug: 'powerpoint-a-pdf',
@@ -1317,7 +1317,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Qué alternativas tengo mientras?', a: 'Puedes usar PowerPoint → Guardar como → PDF, o convertir tus diapositivas a imágenes y luego usar Imágenes a PDF.' },
     ],
     related: ['word-a-pdf', 'excel-a-pdf', 'html-a-pdf'],
-    keywords: ['powerpoint a pdf', 'ppt a pdf', 'convertir powerpoint a pdf', 'presentacion a pdf'],
+    keywords: ['powerpoint a pdf', 'ppt a pdf', 'convertir powerpoint a pdf', 'presentacion a pdf', 'pasar ppt a pdf', 'pptx a pdf', 'powerpoint a pdf gratis', 'slides a pdf', 'ppt to pdf online'],
   },
   {
     slug: 'pdf-a-word',
@@ -1342,7 +1342,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Hay alternativas mientras tanto?', a: 'Puedes copiar el texto manualmente o usar Google Docs que tiene una función de importación de PDF bastante buena.' },
     ],
     related: ['word-a-pdf', 'pdf-a-excel', 'pdf-a-powerpoint'],
-    keywords: ['pdf a word', 'pdf a docx', 'convertir pdf a word', 'editar pdf en word'],
+    keywords: ['pdf a word', 'pdf a docx', 'convertir pdf a word', 'editar pdf en word', 'pasar pdf a word', 'extraer texto de pdf', 'pdf a documento editable', 'pdf to word gratis', 'convertir pdf a documento'],
   },
   {
     slug: 'pdf-a-excel',
@@ -1366,7 +1366,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Puedo extraer datos de tablas en PDF?', a: 'Actualmente no. Estamos desarrollando esta función. Mientras tanto, puedes usar la función de copiar tabla desde el lector de PDF.' },
     ],
     related: ['excel-a-pdf', 'pdf-a-word', 'pdf-a-powerpoint'],
-    keywords: ['pdf a excel', 'pdf a xlsx', 'convertir pdf a excel', 'extraer tabla pdf a excel'],
+    keywords: ['pdf a excel', 'pdf a xlsx', 'convertir pdf a excel', 'extraer tabla pdf a excel', 'pasar pdf a excel', 'pdf a hoja de calculo', 'pdf a excel gratis', 'pdf to excel online', 'convertir pdf a tabla'],
   },
   {
     slug: 'pdf-a-powerpoint',
@@ -1390,7 +1390,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Cada página del PDF se convierte en una diapositiva?', a: 'Sí, esa es la idea. Cada página del PDF se convertiría en una diapositiva independiente en la presentación.' },
     ],
     related: ['powerpoint-a-pdf', 'pdf-a-word', 'pdf-a-excel'],
-    keywords: ['pdf a powerpoint', 'pdf a ppt', 'convertir pdf a powerpoint', 'pdf a presentacion'],
+    keywords: ['pdf a powerpoint', 'pdf a ppt', 'convertir pdf a powerpoint', 'pdf a presentacion', 'pasar pdf a ppt', 'pdf a slides', 'pdf a pptx', 'pdf to powerpoint gratis', 'convertir pdf a presentacion'],
   },
 
   // ====================================================================
@@ -1422,7 +1422,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Qué es la generación Millennial?', a: 'Los Millennials (Generación Y) son las personas nacidas entre 1981 y 1996. La generación Z nació entre 1997 y 2012, y la Generación Alpha desde 2013.' },
     ],
     related: ['conversor-zona-horaria', 'numeros-a-letras', 'contador-palabras'],
-    keywords: ['calculadora de edad', 'calcular edad', 'cuantos años tengo', 'edad exacta', 'calculadora años meses dias'],
+    keywords: ['calculadora de edad', 'calcular edad', 'cuantos años tengo', 'edad exacta', 'calculadora años meses dias', 'cuantos años tengo online', 'calcular edad exacta', 'diferencia entre fechas', 'calcular cumpleaños', 'edad en años meses y dias', 'signo zodiacal por fecha', 'generacion por edad'],
   },
   {
     slug: 'generador-qr',
@@ -1449,7 +1449,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Puedo cambiar el color del QR?', a: 'Sí. Puedes personalizar el color de frente y fondo. Recomendamos mantener alto contraste para mejor escaneabilidad.' },
     ],
     related: ['numeros-a-letras', 'mayusculas-a-minusculas', 'json-a-csv'],
-    keywords: ['generador qr', 'codigo qr', 'crear qr', 'qr code generator', 'qr online gratis'],
+    keywords: ['generador qr', 'codigo qr', 'crear qr', 'qr code generator', 'qr online gratis', 'generar codigo qr', 'qr personalizado', 'qr con colores', 'qr de texto', 'qr de url', 'descargar qr png', 'crear codigo qr gratis'],
   },
   {
     slug: 'conversor-zona-horaria',
@@ -1477,7 +1477,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Qué países tienen diferencia de 30 minutos?', a: 'India (UTC+5:30), Irán (UTC+3:30), Afganistán (UTC+4:30), Venezuela (UTC-4), entre otros.' },
     ],
     related: ['calculadora-edad', 'celsius-a-fahrenheit', 'kilometros-a-millas'],
-    keywords: ['conversor zona horaria', 'hora mundial', 'huso horario', 'convertir hora', 'diferencia horaria'],
+    keywords: ['conversor zona horaria', 'hora mundial', 'huso horario', 'convertir hora', 'diferencia horaria', 'que hora es en', 'zona horaria online', 'convertir zona horaria', 'hora en otros paises', 'calcular diferencia horaria', 'husos horarios del mundo', 'time zone converter'],
   },
   {
     slug: 'numeros-a-letras',
@@ -1507,7 +1507,7 @@ export const CONVERTERS: Converter[] = [
       { q: '¿Cómo se escriben los números con decimales?', a: 'Puedes introducir decimales con punto (ej: 1234.56). En modo euros se convierten en «X euros con Y céntimos».' },
     ],
     related: ['mayusculas-a-minusculas', 'contador-palabras', 'calculadora-edad'],
-    keywords: ['numeros a letras', 'escribir numeros en palabras', 'numeros a texto', 'convertir numero a letras', 'numeros en español'],
+    keywords: ['numeros a letras', 'escribir numeros en palabras', 'numeros a texto', 'convertir numero a letras', 'numeros en español', 'como se escribe 1000', 'numeros a letras euros', 'convertir numeros a palabras', 'escribir cheques en letras', 'numeros cardinales español', 'pasar numero a letra'],
   },
 ];
 
