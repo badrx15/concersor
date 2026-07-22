@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FileDrop, ErrorBox, DownloadButton, loadScript, canvasToBlob, formatBytes } from './shared';
+import * as pdfjsLib from 'pdfjs-dist';
+import { FileDrop, ErrorBox, DownloadButton, canvasToBlob, formatBytes } from './shared';
 
 export function PdfToImagesWidget() {
   const [file, setFile] = useState<File | null>(null);
@@ -16,9 +17,8 @@ export function PdfToImagesWidget() {
     if (!file) { setError('Selecciona un PDF'); return; }
     setBusy(true); setError(''); setResults([]);
     try {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
-      const pdfjsLib = (window as any).pdfjsLib;
-      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      // Worker desde el paquete npm para coincidir con la versión instalada
+      pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
       const buf = await file.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
@@ -31,7 +31,7 @@ export function PdfToImagesWidget() {
         const canvas = document.createElement('canvas');
         canvas.width = viewport.width;
         canvas.height = viewport.height;
-        await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+        await page.render({ canvas, viewport }).promise;
         const blob = await canvasToBlob(canvas, 'image/png');
         const url = URL.createObjectURL(blob);
         pages.push({ url, name: `pagina-${String(i).padStart(3, '0')}.png`, size: blob.size });

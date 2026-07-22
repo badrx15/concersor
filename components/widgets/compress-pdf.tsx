@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FileDrop, DownloadButton, ErrorBox, loadScript, formatBytes } from './shared';
+import { FileDrop, DownloadButton, ErrorBox, formatBytes } from './shared';
 
 export function CompressPdfWidget() {
   const [file, setFile] = useState<File | null>(null);
@@ -15,8 +15,7 @@ export function CompressPdfWidget() {
     if (!file) { setError('Selecciona un PDF'); return; }
     setBusy(true); setError(''); setResult(null);
     try {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js');
-      const { PDFDocument } = (window as any).PDFLib;
+      const { PDFDocument } = await import('pdf-lib');
       const pdfDoc = await PDFDocument.load(await file.arrayBuffer(), { ignoreEncryption: true });
       // Remove metadata to reduce size
       pdfDoc.setTitle('');
@@ -26,7 +25,7 @@ export function CompressPdfWidget() {
       pdfDoc.setProducer('');
       pdfDoc.setCreator('');
       const bytes = await pdfDoc.save({ useObjectStreams: true });
-      const blob = new Blob([bytes], { type: 'application/pdf' });
+      const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       setResult({ url, name: file.name.replace(/\.pdf$/i, '') + '-comprimido.pdf', size: blob.size, original: file.size });
     } catch (e) {

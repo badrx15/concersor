@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FileDrop, DownloadButton, ErrorBox, loadImage, loadScript, formatBytes } from './shared';
+import { jsPDF } from 'jspdf';
+import { FileDrop, DownloadButton, ErrorBox, loadImage, formatBytes } from './shared';
 
 export function ImageToPdfWidget() {
   const [files, setFiles] = useState<File[]>([]);
@@ -15,8 +16,6 @@ export function ImageToPdfWidget() {
     if (files.length === 0) { setError('Selecciona al menos una imagen'); return; }
     setBusy(true); setError(''); setResult(null);
     try {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-      const jsPDF = (window as any).jspdf.jsPDF;
       const pdf = new jsPDF({ unit: 'pt', format: 'a4' });
       const pageW = pdf.internal.pageSize.getWidth();
       const pageH = pdf.internal.pageSize.getHeight();

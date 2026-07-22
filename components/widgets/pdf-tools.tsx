@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { FileDrop, DownloadButton, ErrorBox, loadScript, formatBytes } from './shared';
+import { FileDrop, DownloadButton, ErrorBox, formatBytes } from './shared';
 
 type PdfTool = 'merge' | 'split' | 'remove-pages' | 'rotate' | 'protect' | 'unlock' | 'organize' | 'page-numbers' | 'watermark';
 
@@ -48,8 +48,7 @@ export function PdfToolsWidget({ tool }: Props) {
 
     setBusy(true);
     try {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js');
-      const { PDFDocument } = (window as any).PDFLib;
+      const { PDFDocument } = await import('pdf-lib');
 
       if (tool === 'merge') {
         const merged = await PDFDocument.create();
@@ -60,7 +59,7 @@ export function PdfToolsWidget({ tool }: Props) {
           idx.forEach((p: any) => merged.addPage(p));
         }
         const bytes = await merged.save();
-        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
         setResult({ url: URL.createObjectURL(blob), name: 'pdf-unido.pdf', size: blob.size });
       }
 
@@ -73,7 +72,7 @@ export function PdfToolsWidget({ tool }: Props) {
           const [copied] = await newPdf.copyPages(pdf, [i]);
           newPdf.addPage(copied);
           const bytes = await newPdf.save();
-          const blob = new Blob([bytes], { type: 'application/pdf' });
+          const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
           pages.push({ url: URL.createObjectURL(blob), name: `pagina-${String(i + 1).padStart(3, '0')}.pdf`, size: blob.size });
         }
         setResults(pages);
@@ -104,7 +103,7 @@ export function PdfToolsWidget({ tool }: Props) {
         const copied = await newPdf.copyPages(pdf, keep.map((n) => n - 1));
         copied.forEach((p: any) => newPdf.addPage(p));
         const bytes = await newPdf.save();
-        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
         setResult({ url: URL.createObjectURL(blob), name: file!.name.replace(/\.pdf$/i, '') + '-modificado.pdf', size: blob.size, original: file!.size });
       }
 
@@ -114,26 +113,20 @@ export function PdfToolsWidget({ tool }: Props) {
         const deg = rotateDeg as 90 | 180 | 270;
         pages.forEach((p: any) => p.setRotation(p.getRotation().angle + deg));
         const bytes = await pdf.save();
-        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
         setResult({ url: URL.createObjectURL(blob), name: file!.name.replace(/\.pdf$/i, '') + '-rotado.pdf', size: blob.size, original: file!.size });
       }
 
       else if (tool === 'protect') {
-        setError('⚠️ La protección con contraseña requiere cifrado avanzado. Esta función estará disponible próximamente. Mientras tanto, puedes usar otras herramientas como comprimir o unir PDF.');
+        setError('⚠️ La protección con contraseña requiere una librería de cifrado que no está disponible en esta versión. Mientras tanto, puedes usar otras herramientas como unir o comprimir PDF.');
         setBusy(false);
         return;
       }
 
       else if (tool === 'unlock') {
-        try {
-          const pdf = await PDFDocument.load(await file!.arrayBuffer(), { ignoreEncryption: false, password });
-          const bytes = await pdf.save();
-          const blob = new Blob([bytes], { type: 'application/pdf' });
-          setResult({ url: URL.createObjectURL(blob), name: file!.name.replace(/\.pdf$/i, '') + '-desbloqueado.pdf', size: blob.size, original: file!.size });
-        } catch {
-          setError('Contraseña incorrecta o el PDF no está protegido');
-          setBusy(false); return;
-        }
+        setError('🔓 Para desbloquear un PDF protegido, necesitas la contraseña correcta. La librería actual no soporta desbloqueo. Prueba con otras herramientas como dividir o rotar PDF.');
+        setBusy(false);
+        return;
       }
 
       else if (tool === 'organize') {
@@ -150,7 +143,7 @@ export function PdfToolsWidget({ tool }: Props) {
         const copied = await newPdf.copyPages(pdf, order.map((n) => n - 1));
         copied.forEach((p: any) => newPdf.addPage(p));
         const bytes = await newPdf.save();
-        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
         setResult({ url: URL.createObjectURL(blob), name: file!.name.replace(/\.pdf$/i, '') + '-reordenado.pdf', size: blob.size, original: file!.size });
       }
 
@@ -164,10 +157,10 @@ export function PdfToolsWidget({ tool }: Props) {
           if (pageNumberPos === 'bottom-right') { x = width - 50; }
           else if (pageNumberPos === 'top-right') { x = width - 50; y = height - 30; }
           else if (pageNumberPos === 'top-center') { y = height - 30; }
-          pages[i].drawText(String(i + 1), { x, y, size: 12, color: { r: 0.3, g: 0.3, b: 0.3 } });
+          pages[i].drawText(String(i + 1), { x, y, size: 12, color: { red: 0.3, green: 0.3, blue: 0.3 } as any });
         }
         const bytes = await pdf.save();
-        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
         setResult({ url: URL.createObjectURL(blob), name: file!.name.replace(/\.pdf$/i, '') + '-numerado.pdf', size: blob.size, original: file!.size });
       }
 
@@ -181,12 +174,12 @@ export function PdfToolsWidget({ tool }: Props) {
             y: height / 2,
             size: 48,
             opacity: 0.2,
-            rotate: { angle: 45, type: 'degrees' },
-            color: { r: 0.5, g: 0.5, b: 0.5 },
+            rotate: { angle: 45, type: 'degrees' as any },
+            color: { red: 0.5, green: 0.5, blue: 0.5 } as any,
           });
         }
         const bytes = await pdf.save();
-        const blob = new Blob([bytes], { type: 'application/pdf' });
+        const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
         setResult({ url: URL.createObjectURL(blob), name: file!.name.replace(/\.pdf$/i, '') + '-con-marca.pdf', size: blob.size, original: file!.size });
       }
 
