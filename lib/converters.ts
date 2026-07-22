@@ -33,7 +33,10 @@ export type WidgetType =
   | 'age-calculator'
   | 'qr-generator'
   | 'timezone-converter'
-  | 'numbers-to-words';
+  | 'numbers-to-words'
+  | 'dev-tools'
+  | 'barcode-generator'
+  | 'utility-tools';
 
 export interface FaqItem {
   q: string;
@@ -1508,6 +1511,199 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['mayusculas-a-minusculas', 'contador-palabras', 'calculadora-edad'],
     keywords: ['numeros a letras', 'escribir numeros en palabras', 'numeros a texto', 'convertir numero a letras', 'numeros en español', 'como se escribe 1000', 'numeros a letras euros', 'convertir numeros a palabras', 'escribir cheques en letras', 'numeros cardinales español', 'pasar numero a letra'],
+  },
+
+  // ====================================================================
+  // HERRAMIENTAS PARA DESARROLLADORES — Hash, Base64, JSON
+  // ====================================================================
+  {
+    slug: 'generador-hash',
+    name: 'Generador de Hash',
+    category: 'texto',
+    icon: '🔐',
+    color: '#06b6d4',
+    widget: 'dev-tools',
+    widgetConfig: { tool: 'hash' },
+    metaTitle: 'Generador de Hash MD5/SHA — Hash online gratis | ConversorPro',
+    metaDescription: 'Genera hashes MD5, SHA-1, SHA-256 y SHA-512 de cualquier texto. Gratis, sin registro, 100% en tu navegador. Ideal para desarrolladores.',
+    explanation: [
+      'Un hash es una huella digital única de un texto o archivo. Genera hashes MD5, SHA-1, SHA-256 y SHA-512 de cualquier texto al instante usando la Web Crypto API de tu navegador.',
+      'Los hashes se usan para verificar integridad de archivos, almacenar contraseñas de forma segura y crear identificadores únicos. El procesamiento es 100% local.',
+    ],
+    equivalences: [
+      { from: 'MD5', to: '128 bits (32 caracteres hex)' },
+      { from: 'SHA-1', to: '160 bits (40 caracteres hex)' },
+      { from: 'SHA-256', to: '256 bits (64 caracteres hex)' },
+      { from: 'SHA-512', to: '512 bits (128 caracteres hex)' },
+    ],
+    faq: [
+      { q: '¿Los hashes se generan en el servidor?', a: 'No. Todo el cálculo se realiza en tu navegador usando la Web Crypto API. Tu texto nunca sale de tu dispositivo.' },
+      { q: '¿Qué diferencia hay entre MD5 y SHA?', a: 'MD5 genera 128 bits, SHA-1 genera 160 bits, SHA-256 genera 256 bits y SHA-512 genera 512 bits. A mayor bits, más seguro pero más lento.' },
+    ],
+    related: ['codificador-base64', 'validador-json', 'generador-qr'],
+    keywords: ['generador hash', 'md5 online', 'sha256', 'sha1', 'sha512', 'calcular hash', 'hash de texto', 'generar md5', 'crypto hash', 'hash online gratis'],
+  },
+  {
+    slug: 'codificador-base64',
+    name: 'Codificador Base64',
+    category: 'texto',
+    icon: '🔤',
+    color: '#06b6d4',
+    widget: 'dev-tools',
+    widgetConfig: { tool: 'base64' },
+    metaTitle: 'Codificar/Decodificar Base64 — Online gratis | ConversorPro',
+    metaDescription: 'Codifica y decodifica texto a Base64 al instante. 100% en tu navegador, gratis y sin registro. Ideal para desarrolladores.',
+    explanation: [
+      'Convierte texto a Base64 y viceversa al instante. Base64 es un sistema de codificación que permite representar datos binarios usando caracteres ASCII.',
+      'Es muy usado para incrustar imágenes en HTML/CSS, enviar datos en APIs REST y almacenar información en formatos de texto. El procesamiento es 100% local.',
+    ],
+    equivalences: [
+      { from: 'Hola', to: 'SG9sYQ==' },
+      { from: 'Hello World', to: 'SGVsbG8gV29ybGQ=' },
+      { from: 'Base64', to: 'QmFzZTY0' },
+    ],
+    faq: [
+      { q: '¿Para qué se usa Base64?', a: 'Para transmitir datos binarios (imágenes, archivos) en formatos que solo soportan texto, como JSON, XML o CSS.' },
+      { q: '¿Base64 es seguro?', a: 'No es encriptación, solo codificación. Cualquiera puede decodificar Base64 fácilmente. No lo uses para datos sensibles.' },
+    ],
+    related: ['generador-hash', 'validador-json', 'json-a-csv'],
+    keywords: ['base64', 'codificar base64', 'decodificar base64', 'base64 online', 'btoa', 'atob', 'codificar texto', 'base64 encode decode'],
+  },
+  {
+    slug: 'validador-json',
+    name: 'Validador y Formateador JSON',
+    category: 'texto',
+    icon: '🧩',
+    color: '#06b6d4',
+    widget: 'dev-tools',
+    widgetConfig: { tool: 'json' },
+    metaTitle: 'Validador y Formateador JSON — Online gratis | ConversorPro',
+    metaDescription: 'Valida, formatea y embellece JSON. Minifica JSON. 100% en tu navegador, gratis. Ideal para desarrolladores y APIs.',
+    explanation: [
+      'Valida y formatea cualquier JSON para hacerlo legible. Detecta errores de sintaxis y te muestra dónde está el problema. También puedes minificar JSON para ahorrar espacio.',
+      'Esencial para desarrolladores que trabajan con APIs REST, archivos de configuración o intercambio de datos. El procesamiento es 100% local.',
+    ],
+    equivalences: [
+      { from: 'JSON sin formato', to: 'JSON formateado e indentado' },
+      { from: 'JSON formateado', to: 'JSON minificado (sin espacios)' },
+    ],
+    faq: [
+      { q: '¿Mi JSON se envía a algún servidor?', a: 'No. Todo el procesamiento ocurre en tu navegador usando JSON.parse y JSON.stringify nativos de JavaScript.' },
+      { q: '¿Qué niveles de indentación soporta?', a: 'Soporta 2 espacios, 4 espacios, 1 espacio o minificado (0 espacios).' },
+    ],
+    related: ['json-a-csv', 'codificador-base64', 'generador-hash'],
+    keywords: ['validador json', 'formatear json', 'pretty print json', 'minificar json', 'json online', 'json formatter', 'validar json gratis'],
+  },
+
+  // ====================================================================
+  // GENERADOR DE CÓDIGOS DE BARRAS
+  // ====================================================================
+  {
+    slug: 'generador-codigo-barras',
+    name: 'Generador de Códigos de Barras',
+    category: 'archivos',
+    icon: '🏷️',
+    color: '#f97316',
+    widget: 'barcode-generator',
+    metaTitle: 'Generador de Códigos de Barras — Barcode online gratis | ConversorPro',
+    metaDescription: 'Genera códigos de barras CODE128, CODE39, EAN-13, UPC-A, ITF-14 y Pharmacode. Personaliza colores y descarga SVG/PNG.',
+    explanation: [
+      'Genera códigos de barras profesionales con múltiples formatos: CODE128, CODE39, EAN-13, UPC-A, ITF-14 y Pharmacode. Personaliza colores, tamaño y descarga en SVG o PNG.',
+      'Ideal para etiquetas de productos, códigos de inventario, envíos postales y sistemas de punto de venta. El procesamiento es 100% local en tu navegador.',
+    ],
+    equivalences: [
+      { from: 'CODE128', to: 'Alfanumérico, alta densidad' },
+      { from: 'CODE39', to: 'Alfanumérico, caracteres especiales' },
+      { from: 'EAN-13', to: '12 dígitos + dígito control (productos)' },
+      { from: 'UPC-A', to: '11 dígitos + dígito control (EE.UU.)' },
+    ],
+    faq: [
+      { q: '¿Qué formato de código de barras debo usar?', a: 'CODE128 es el más versátil (alfanumérico). EAN-13 es el estándar para productos de venta al por menor.' },
+      { q: '¿Puedo descargar el código de barras?', a: 'Sí, puedes descargarlo como SVG (vector) o PNG (imagen) con la calidad que necesites.' },
+    ],
+    related: ['generador-qr', 'generador-hash', 'comprimir-imagen'],
+    keywords: ['generador codigo barras', 'barcode generator', 'codigo barras online', 'crear codigo barras', 'code128', 'ean13', 'upc', 'codigo barras gratis'],
+  },
+
+  // ====================================================================
+  // HERRAMIENTAS DE UTILIDAD — Markdown, Metadatos, Voz a Texto
+  // ====================================================================
+  {
+    slug: 'conversor-markdown',
+    name: 'Conversor Markdown a HTML',
+    category: 'texto',
+    icon: '📝',
+    color: '#06b6d4',
+    widget: 'utility-tools',
+    widgetConfig: { tool: 'markdown' },
+    metaTitle: 'Conversor Markdown a HTML — Online gratis | ConversorPro',
+    metaDescription: 'Convierte Markdown a HTML con vista previa en vivo. 100% en tu navegador, gratis y sin registro. Ideal para desarrolladores y escritores.',
+    explanation: [
+      'Convierte texto Markdown a HTML al instante con vista previa en vivo. Markdown es un lenguaje de marcado ligero muy usado en documentación técnica, READMEs y foros.',
+      'La conversión se realiza mediante la librería marked.js directamente en tu navegador. Puedes ver tanto la vista previa como el código HTML generado.',
+    ],
+    equivalences: [
+      { from: '# Título', to: '<h1>Título</h1>' },
+      { from: '**negrita**', to: '<strong>negrita</strong>' },
+      { from: '- Item', to: '<li>Item</li>' },
+      { from: '[enlace](url)', to: '<a href="url">enlace</a>' },
+    ],
+    faq: [
+      { q: '¿Mi texto se envía a un servidor?', a: 'No. La conversión se realiza con marked.js directamente en tu navegador. Tu texto nunca sale de tu dispositivo.' },
+      { q: '¿Qué elementos Markdown soporta?', a: 'Soporta títulos, listas, enlaces, imágenes, código, tablas, citas, negrita, cursiva y más.' },
+    ],
+    related: ['mayusculas-a-minusculas', 'validador-json', 'contador-palabras'],
+    keywords: ['markdown a html', 'conversor markdown', 'markdown online', 'convertir md a html', 'marked js', 'markdown editor online', 'previsualizar markdown'],
+  },
+  {
+    slug: 'lector-metadatos-imagen',
+    name: 'Lector de Metadatos de Imagen',
+    category: 'archivos',
+    icon: '📷',
+    color: '#f97316',
+    widget: 'utility-tools',
+    widgetConfig: { tool: 'metadata' },
+    metaTitle: 'Lector de Metadatos EXIF — Ver datos de imagen online | ConversorPro',
+    metaDescription: 'Lee los metadatos EXIF de tus imágenes: modelo de cámara, fecha, GPS, ISO, apertura y más. 100% privado, sin subir archivos.',
+    explanation: [
+      'Extrae y muestra los metadatos EXIF de cualquier imagen JPG, PNG o WebP. Obtén información como la cámara utilizada, fecha de toma, configuración ISO, apertura, velocidad de obturación y hasta coordenadas GPS.',
+      'Ideal para fotógrafos, periodistas y curiosos que quieren conocer los detalles técnicos de una fotografía. El procesamiento es 100% local.',
+    ],
+    equivalences: [
+      { from: 'JPG con EXIF', to: 'Datos: cámara, fecha, ISO, GPS' },
+      { from: 'Foto de móvil', to: 'Datos: modelo, apertura, flash' },
+    ],
+    faq: [
+      { q: '¿La imagen se sube a algún servidor?', a: 'No. La lectura de metadatos se realiza enteramente en tu navegador usando la librería exif-js. Tu imagen nunca sale de tu dispositivo.' },
+      { q: '¿Qué metadatos puedo ver?', a: 'Fabricante, modelo, fecha, ISO, apertura (f/), velocidad de obturación, distancia focal, flash, GPS y dimensiones.' },
+    ],
+    related: ['comprimir-imagen', 'imagen-a-webp', 'png-a-jpg'],
+    keywords: ['lector metadatos imagen', 'exif online', 'ver metadatos foto', 'datos exif', 'informacion foto', 'metadatos fotografia', 'gps foto', 'exif reader'],
+  },
+  {
+    slug: 'voz-a-texto',
+    name: 'Voz a Texto',
+    category: 'texto',
+    icon: '🎤',
+    color: '#06b6d4',
+    widget: 'utility-tools',
+    widgetConfig: { tool: 'speech' },
+    metaTitle: 'Voz a Texto — Reconocimiento de voz online gratis | ConversorPro',
+    metaDescription: 'Convierte tu voz en texto usando el reconocimiento de voz de tu navegador. Gratis, sin registro. Compatible con Chrome, Edge y Safari.',
+    explanation: [
+      'Convierte tu voz en texto al instante usando la Web Speech API de tu navegador. Habla en español y ve cómo tus palabras se convierten en texto en tiempo real.',
+      'Ideal para tomar notas rápidas, transcribir reuniones, dictar textos largos o para personas con dificultades para escribir. Funciona sin conexión.',
+    ],
+    equivalences: [
+      { from: '1 minuto hablando', to: '≈ 130-150 palabras transcritas' },
+      { from: 'Voz → Texto', to: 'Reconocimiento en tiempo real' },
+    ],
+    faq: [
+      { q: '¿El audio se envía a algún servidor?', a: 'El reconocimiento de voz puede requerir conexión a internet para el procesamiento inicial. Sin embargo, tu voz no se almacena en ningún servidor.' },
+      { q: '¿Qué navegadores soportan esta función?', a: 'Chrome, Edge y Safari tienen soporte completo. Firefox tiene soporte limitado.' },
+    ],
+    related: ['contador-palabras', 'mayusculas-a-minusculas', 'conversor-markdown'],
+    keywords: ['voz a texto', 'reconocimiento de voz', 'dictado online', 'transcribir audio', 'speech to text', 'voz a texto gratis', 'escribir hablando', 'notas de voz texto'],
   },
 ];
 

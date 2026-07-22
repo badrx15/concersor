@@ -18,6 +18,9 @@ import { AgeCalculatorWidget } from './widgets/age-calculator';
 import { QrGeneratorWidget } from './widgets/qr-generator';
 import { TimezoneConverterWidget } from './widgets/timezone-converter';
 import { NumbersToWordsWidget } from './widgets/numbers-to-words';
+import { DevToolsWidget } from './widgets/dev-tools';
+import { BarcodeGeneratorWidget } from './widgets/barcode-generator';
+import { UtilityToolsWidget } from './widgets/utility-tools';
 
 interface Props {
   converter: Converter;
@@ -59,6 +62,12 @@ export function ConverterWidget({ converter }: Props) {
       return <TimezoneConverterWidget />;
     case 'numbers-to-words':
       return <NumbersToWordsWidget />;
+    case 'dev-tools':
+      return <DevToolsWidget tool={(converter.widgetConfig?.tool as any) || 'hash'} />;
+    case 'barcode-generator':
+      return <BarcodeGeneratorWidget />;
+    case 'utility-tools':
+      return <UtilityToolsWidget tool={(converter.widgetConfig?.tool as any) || 'markdown'} />;
     default:
       return <p className="text-slate-400">Widget no disponible todavía.</p>;
   }
