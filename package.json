@@ -9,16 +9,20 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "docx": "^9.7.1",
     "exif-js": "^2.3.0",
     "jsbarcode": "^3.12.3",
     "jspdf": "^4.2.1",
+    "jszip": "^3.10.1",
     "marked": "^18.0.7",
     "next": "16.2.10",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^6.1.200",
+    "pptxgenjs": "^4.0.1",
     "qrcode": "^1.5.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
