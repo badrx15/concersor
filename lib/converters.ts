@@ -42,7 +42,9 @@ export type WidgetType =
   | 'percentage-calculator'
   | 'bmi-calculator'
   | 'password-generator'
-  | 'vat-calculator';
+  | 'vat-calculator'
+  | 'date-difference'
+  | 'discount-calculator';
 
 export interface FaqItem {
   q: string;
@@ -1912,6 +1914,66 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['kilometros-a-millas', 'kilos-a-libras', 'celsius-a-fahrenheit'],
     keywords: ['tazas a ml', 'tazas a mililitros', 'cups a ml', 'convertir tazas a ml', 'cocina medidas tazas', 'taza a mililitros', 'cuantos ml son una taza', 'medidas cocina americana', 'conversor cocina', '1 taza en ml', 'recetas tazas a ml'],
+  },
+
+  // ====================================================================
+  // CALCULADORAS HERRAMIENTAS
+  // ====================================================================
+  {
+    slug: 'dias-entre-fechas',
+    name: 'Calculadora de Días entre Fechas',
+    category: 'texto',
+    icon: '📅',
+    color: '#06b6d4',
+    widget: 'date-difference',
+    metaTitle: 'Calculadora de Días entre Fechas — Calcular diferencia online gratis | ConversorPro',
+    metaDescription:
+      'Calcula el número de días, meses y años entre dos fechas. También suma o resta días a una fecha. Gratis, sin registro, 100% en tu navegador.',
+    explanation: [
+      'Calcula la diferencia exacta entre dos fechas en años, meses, días, y el total en días, horas y minutos. También puedes sumar o restar días, meses y años a una fecha base.',
+      'Es útil para calcular plazos, tiempo hasta un evento, edad exacta, días laborables entre dos fechas, vencimientos de facturas, o simplemente saber cuántos días faltan para una fecha especial.',
+    ],
+    equivalences: [
+      { from: '1 año', to: '365 días (366 si bisiesto)' },
+      { from: '1 mes', to: '28-31 días (depende del mes)' },
+      { from: '1 semana', to: '7 días' },
+      { from: '1 día', to: '24 horas = 1.440 minutos' },
+    ],
+    faq: [
+      { q: '¿El cálculo incluye ambos días?', a: 'Sí. La calculadora cuenta desde el día de inicio hasta el día final inclusive.' },
+      { q: '¿Se consideran años bisiestos?', a: 'Sí, la calculadora usa el calendario real y tiene en cuenta los años bisiestos (29 de febrero).' },
+      { q: '¿Qué pasa si la fecha de inicio es posterior?', a: 'La calculadora te avisará que la fecha de inicio es posterior. Muestra el valor absoluto de la diferencia.' },
+    ],
+    related: ['calculadora-edad', 'conversor-husos-horarios', 'calculadora-porcentaje'],
+    keywords: ['dias entre fechas', 'calcular dias entre dos fechas', 'diferencia entre fechas', 'cuantos dias entre dos fechas', 'calcular fecha', 'sumar dias a una fecha', 'calculadora de dias', 'dias entre fechas online', 'tiempo entre dos fechas', 'calendario calculadora', 'cuantos dias faltan'],
+  },
+  {
+    slug: 'calculadora-descuentos',
+    name: 'Calculadora de Descuentos',
+    category: 'texto',
+    icon: '🏷️',
+    color: '#22c55e',
+    widget: 'discount-calculator',
+    metaTitle: 'Calculadora de Descuentos Online — Calcular precio final gratis | ConversorPro',
+    metaDescription:
+      'Calcula el precio final después de un descuento, cuánto ahorras o qué porcentaje de descuento te han aplicado. Gratis y fácil.',
+    explanation: [
+      'Calcula el precio final tras aplicar un descuento, cuánto dinero ahorras, o qué porcentaje de descuento representa un precio rebajado respecto al original.',
+      'Ideal para compras con rebajas, Black Friday, liquidaciones y promociones. Solo tienes que introducir el precio original y el descuento (o el precio final) y obtendrás todos los detalles.',
+    ],
+    equivalences: [
+      { from: 'Precio 100 € - 20%', to: '80 € (ahorras 20 €)' },
+      { from: 'Precio 50 € - 10%', to: '45 € (ahorras 5 €)' },
+      { from: 'Precio 200 € - 25%', to: '150 € (ahorras 50 €)' },
+      { from: 'Precio 80 € → 60 €', to: '25% de descuento' },
+    ],
+    faq: [
+      { q: '¿Cómo se calcula el precio con descuento?', a: 'Se multiplica el precio original por el porcentaje de descuento y se resta del precio original. Ej: 100 € - (100 × 20%) = 80 €.' },
+      { q: '¿Cómo calculo el porcentaje de descuento?', a: 'Resta el precio final del original, divide entre el original y multiplica por 100. Ej: ((100 - 80) / 100) × 100 = 20%.' },
+      { q: '¿Funciona con cualquier moneda?', a: 'Sí, los resultados se muestran en euros (€) pero el cálculo es el mismo para cualquier moneda.' },
+    ],
+    related: ['calculadora-porcentaje', 'calculadora-iva', 'conversor-divisas'],
+    keywords: ['calculadora descuento', 'calcular descuento', 'precio con descuento', 'cuanto ahorro', 'descuento porcentaje', 'calcular precio final', 'rebajas calculadora', 'black friday calculadora', 'descuento online', 'porcentaje descuento', 'calcular ahorro'],
   },
 ];
 

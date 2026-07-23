@@ -23,6 +23,8 @@ import { PercentageCalculatorWidget } from './widgets/percentage-calculator';
 import { BmiCalculatorWidget } from './widgets/bmi-calculator';
 import { PasswordGeneratorWidget } from './widgets/password-generator';
 import { VatCalculatorWidget } from './widgets/vat-calculator';
+import { DateDifferenceWidget } from './widgets/date-difference';
+import { DiscountCalculatorWidget } from './widgets/discount-calculator';
 
 // Skeleton para widgets lazy
 function WidgetSkeleton() {
@@ -99,6 +101,10 @@ export function ConverterWidget({ converter }: Props) {
       return <PasswordGeneratorWidget />;
     case 'vat-calculator':
       return <VatCalculatorWidget />;
+    case 'date-difference':
+      return <DateDifferenceWidget />;
+    case 'discount-calculator':
+      return <DiscountCalculatorWidget />;
     case 'utility-tools':
       return <UtilityToolsWidget tool={(converter.widgetConfig?.tool as any) || 'markdown'} />;
     default:
