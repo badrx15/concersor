@@ -157,7 +157,7 @@ export function PdfToolsWidget({ tool }: Props) {
           if (pageNumberPos === 'bottom-right') { x = width - 50; }
           else if (pageNumberPos === 'top-right') { x = width - 50; y = height - 30; }
           else if (pageNumberPos === 'top-center') { y = height - 30; }
-          pages[i].drawText(String(i + 1), { x, y, size: 12, color: { red: 0.3, green: 0.3, blue: 0.3 } as any });
+          pages[i].drawText(String(i + 1), { x, y, size: 12, color: { type: 'RGB', red: 0.3, green: 0.3, blue: 0.3 } as any });
         }
         const bytes = await pdf.save();
         const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
@@ -175,7 +175,7 @@ export function PdfToolsWidget({ tool }: Props) {
             size: 48,
             opacity: 0.2,
             rotate: { angle: 45, type: 'degrees' as any },
-            color: { red: 0.5, green: 0.5, blue: 0.5 } as any,
+            color: { type: 'RGB', red: 0.5, green: 0.5, blue: 0.5 } as any,
           });
         }
         const bytes = await pdf.save();
