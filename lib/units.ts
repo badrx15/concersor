@@ -37,6 +37,8 @@ export const UNIT_TABLES: Record<string, Record<string, UnitDef>> = {
     'galon-uk': { factor: 4.54609, label: 'galón (Reino Unido)', symbol: 'gal UK' },
     'metro-cubico': { factor: 1000, label: 'metro cúbico', symbol: 'm³' },
     pinta: { factor: 0.473176, label: 'pinta', symbol: 'pt' },
+    taza: { factor: 0.236588, label: 'taza', symbol: 'taza' },
+    'onza-liquida': { factor: 0.0295735, label: 'onza líquida', symbol: 'oz fl' },
   },
   speed: {
     kmh: { factor: 1, label: 'kilómetro por hora', symbol: 'km/h' },

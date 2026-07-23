@@ -38,7 +38,11 @@ export type WidgetType =
   | 'barcode-generator'
   | 'utility-tools'
   | 'heic-to-jpg'
-  | 'gif-video';
+  | 'gif-video'
+  | 'percentage-calculator'
+  | 'bmi-calculator'
+  | 'password-generator'
+  | 'vat-calculator';
 
 export interface FaqItem {
   q: string;
@@ -1764,6 +1768,150 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['heic-a-jpg', 'png-a-jpg', 'imagen-a-webp'],
     keywords: ['video a gif', 'mp4 a gif', 'convertir video a gif', 'crear gif desde video', 'video a gif online', 'gif animado online', 'extraer gif de video', 'generador de gifs', 'gif a video', 'webm a gif'],
+  },
+
+  // ====================================================================
+  // CALCULADORAS
+  // ====================================================================
+  {
+    slug: 'calculadora-porcentaje',
+    name: 'Calculadora de Porcentaje',
+    category: 'texto',
+    icon: '📊',
+    color: '#06b6d4',
+    widget: 'percentage-calculator',
+    metaTitle: 'Calculadora de Porcentaje — Calcular % online gratis | ConversorPro',
+    metaDescription:
+      'Calcula porcentajes al instante: ¿cuánto es X% de Y?, ¿qué porcentaje es X de Y?, cambio porcentual. Gratis, online y sin registro.',
+    explanation: [
+      'Calcula porcentajes de forma rápida y sencilla. Elige entre tres modos: calcular un porcentaje de una cantidad, averiguar qué porcentaje representa un valor sobre un total, o calcular el cambio porcentual entre dos valores.',
+      'El porcentaje es una forma de expresar una proporción como fracción de 100. Se usa en descuentos, estadísticas, finanzas, impuestos y muchos ámbitos cotidianos.',
+    ],
+    equivalences: [
+      { from: '15% de 200', to: '30' },
+      { from: '30 es qué % de 200', to: '15%' },
+      { from: '50 a 75', to: '+50% de cambio' },
+    ],
+    faq: [
+      { q: '¿Cómo calcular el porcentaje de una cantidad?', a: 'Multiplica la cantidad por el porcentaje y divide entre 100. Ejemplo: 15% de 200 = (200 × 15) / 100 = 30.' },
+      { q: '¿Cómo calcular qué porcentaje es un número de otro?', a: 'Divide el valor parcial entre el total y multiplica por 100. Ejemplo: (30 / 200) × 100 = 15%.' },
+      { q: '¿Cómo calcular el cambio porcentual?', a: 'Resta el valor original al nuevo, divide entre el original y multiplica por 100. Ejemplo: ((75 - 50) / 50) × 100 = 50%.' },
+    ],
+    related: ['calculadora-iva', 'calculadora-imc', 'conversor-divisas'],
+    keywords: ['calculadora porcentaje', 'calcular porcentaje', 'porcentaje online', 'calcular %', 'regla de 3 porcentaje', 'porcentaje calculadora', 'tanto por ciento', 'calcular descuento', 'porcentaje de una cantidad', 'como sacar porcentaje'],
+  },
+  {
+    slug: 'calculadora-imc',
+    name: 'Calculadora IMC',
+    category: 'texto',
+    icon: '⚖️',
+    color: '#06b6d4',
+    widget: 'bmi-calculator',
+    metaTitle: 'Calculadora IMC — Índice de Masa Corporal online gratis | ConversorPro',
+    metaDescription:
+      'Calcula tu Índice de Masa Corporal (IMC). Métrico e imperial, con tabla de categorías (bajo peso, normal, sobrepeso, obesidad). Gratis.',
+    explanation: [
+      'El Índice de Masa Corporal (IMC) es una medida que relaciona el peso y la altura de una persona. Se calcula dividiendo el peso en kilogramos entre el cuadrado de la altura en metros (kg/m²).',
+      'El IMC es un indicador útil para identificar posibles problemas de peso en adultos, aunque no tiene en cuenta la composición corporal (músculo vs grasa). Consulta siempre con un profesional de la salud.',
+    ],
+    equivalences: [
+      { from: 'IMC &lt; 18.5', to: 'Bajo peso' },
+      { from: 'IMC 18.5 - 24.9', to: 'Normal' },
+      { from: 'IMC 25 - 29.9', to: 'Sobrepeso' },
+      { from: 'IMC 30 - 34.9', to: 'Obesidad grado I' },
+      { from: 'IMC ≥ 40', to: 'Obesidad grado III' },
+    ],
+    faq: [
+      { q: '¿Qué es el IMC?', a: 'El Índice de Masa Corporal (Body Mass Index) es una medida que relaciona tu peso y altura. Se usa como indicador de salud poblacional.' },
+      { q: '¿El IMC es preciso para atletas?', a: 'No. El IMC no distingue entre músculo y grasa. Los atletas con mucha masa muscular pueden tener un IMC alto sin tener sobrepeso.' },
+      { q: '¿Cuál es mi peso ideal según mi altura?', a: 'No hay un peso ideal único. El IMC normal (18.5-24.9) te da un rango saludable: para 1.70m, sería entre 53 y 72 kg.' },
+    ],
+    related: ['calculadora-porcentaje', 'calculadora-iva', 'conversor-divisas'],
+    keywords: ['calculadora imc', 'indice masa corporal', 'calcular imc', 'imc mujer', 'imc hombre', 'peso ideal', 'imc online', 'como calcular imc', 'tabla imc', 'bmi calculator', 'imc segun edad'],
+  },
+  {
+    slug: 'generador-contrasenas',
+    name: 'Generador de Contraseñas',
+    category: 'texto',
+    icon: '🔑',
+    color: '#06b6d4',
+    widget: 'password-generator',
+    metaTitle: 'Generador de Contraseñas Seguras — Online gratis | ConversorPro',
+    metaDescription:
+      'Genera contraseñas seguras y aleatorias. Elige longitud, mayúsculas, minúsculas, números y símbolos. Gratis, 100% local, sin servidores.',
+    explanation: [
+      'Genera contraseñas seguras y aleatorias directamente en tu navegador. Las contraseñas se generan usando crypto.getRandomValues(), la API de criptografía segura del navegador, garantizando una entropía real.',
+      'Una contraseña segura debe tener al menos 12 caracteres e incluir mayúsculas, minúsculas, números y símbolos. Cuanto más larga y variada, más difícil de descifrar.',
+    ],
+    equivalences: [
+      { from: '8 caracteres', to: 'Débil (segundos en descifrar)' },
+      { from: '12 caracteres', to: 'Fuerte (años en descifrar)' },
+      { from: '16+ caracteres', to: 'Muy fuerte (siglos)' },
+    ],
+    faq: [
+      { q: '¿Son realmente aleatorias las contraseñas?', a: 'Sí. Usamos crypto.getRandomValues(), la API criptográfica del navegador. No se envían a ningún servidor.' },
+      { q: '¿Cuántos caracteres debe tener una contraseña segura?', a: 'Se recomienda al menos 12 caracteres combinando mayúsculas, minúsculas, números y símbolos.' },
+      { q: '¿Se guardan las contraseñas generadas?', a: 'No. Todo el proceso es local en tu navegador. Las contraseñas desaparecen al cerrar la página.' },
+    ],
+    related: ['calculadora-porcentaje', 'calculadora-imc', 'calculadora-iva'],
+    keywords: ['generador contraseñas', 'generar contraseña segura', 'password generator', 'crear contraseña', 'contraseña aleatoria', 'generador de claves', 'contraseña fuerte', 'password seguro', 'crear password', 'generador passwords'],
+  },
+  {
+    slug: 'calculadora-iva',
+    name: 'Calculadora de IVA',
+    category: 'texto',
+    icon: '💰',
+    color: '#06b6d4',
+    widget: 'vat-calculator',
+    metaTitle: 'Calculadora de IVA — Calcular IVA online gratis | ConversorPro',
+    metaDescription:
+      'Calcula el IVA al instante: añade o quita IVA a cualquier cantidad. Tipos 4%, 10% y 21% (España). Gratis, online y sin registro.',
+    explanation: [
+      'Calcula el IVA de tus facturas y presupuestos al instante. Puedes añadir el IVA a un precio sin impuestos o quitar el IVA de un precio con impuestos incluidos para obtener la base imponible.',
+      'Los tipos de IVA en España son: tipo general (21%), tipo reducido (10%) y tipo superreducido (4%). También puedes personalizar el tipo con el control deslizante.',
+    ],
+    equivalences: [
+      { from: 'Base 100€ + 21% IVA', to: 'Total 121€' },
+      { from: 'Precio 121€ (IVA incl.)', to: 'Base 100€, IVA 21€' },
+      { from: 'Base 50€ + 10% IVA', to: 'Total 55€' },
+    ],
+    faq: [
+      { q: '¿Cómo calcular el IVA incluido?', a: 'Divide el precio total entre 1 + tipo de IVA. Ejemplo: 121€ / 1,21 = 100€ de base imponible.' },
+      { q: '¿Qué tipos de IVA hay en España?', a: 'General 21%, reducido 10%, superreducido 4%. El 4% aplica a pan, leche, huevos, frutas, medicamentos y libros.' },
+      { q: '¿Esta calculadora es válida para facturas?', a: 'Los cálculos son precisos, pero siempre consulta con un asesor fiscal para temas legales o contables.' },
+    ],
+    related: ['calculadora-porcentaje', 'calculadora-imc', 'conversor-divisas'],
+    keywords: ['calculadora iva', 'calcular iva', 'iva incluido', 'añadir iva', 'quitar iva', 'iva 21', 'iva 10', 'iva 4', 'base imponible', 'calcular precio sin iva', 'factura iva', 'desglose iva'],
+  },
+  {
+    slug: 'tazas-a-ml',
+    name: 'Tazas a Mililitros',
+    category: 'unidades',
+    icon: '🥤',
+    color: '#3b82f6',
+    widget: 'unit-converter',
+    widgetConfig: { unitCategory: 'volume', defaultFrom: 'taza', defaultTo: 'mililitro' },
+    metaTitle: 'Tazas a Mililitros — Conversor de cocina online gratis | ConversorPro',
+    metaDescription:
+      'Convierte tazas (cup) a mililitros al instante. Perfecto para recetas de cocina americanas. Gratis, preciso y fácil de usar.',
+    explanation: [
+      'Una taza (cup) equivale a 236,588 mililitros. Para convertir tazas a mililitros, multiplica el número de tazas por 236,588. Por ejemplo, 2 tazas × 236,588 = 473,176 ml.',
+      'Esta conversión es esencial para seguir recetas de cocina americanas o británicas. Además de tazas, puedes convertir entre litros, mililitros, onzas líquidas, pintas y galones.',
+    ],
+    equivalences: [
+      { from: '1/4 taza', to: '59 ml' },
+      { from: '1/2 taza', to: '118 ml' },
+      { from: '1 taza', to: '236,59 ml' },
+      { from: '2 tazas', to: '473,18 ml' },
+      { from: '4 tazas (1 cuarto)', to: '946,35 ml' },
+    ],
+    faq: [
+      { q: '¿Cuántos ml son una taza?', a: 'Una taza estándar estadounidense equivale a 236,588 mililitros (aproximadamente 237 ml).' },
+      { q: '¿Es lo mismo una taza en USA que en UK?', a: 'No exactamente. La taza estadounidense son 236,6 ml, mientras que la taza imperial británica son 284 ml. Este conversor usa la taza estadounidense (estándar en recetas).' },
+      { q: '¿Cómo convertir tazas a gramos?', a: 'Depende del ingrediente. Una taza de harina pesa ~125g, una de azúcar ~200g, una de mantequilla ~227g. Para líquidos como agua o leche, 1 taza ≈ 237 gramos.' },
+    ],
+    related: ['kilometros-a-millas', 'kilos-a-libras', 'celsius-a-fahrenheit'],
+    keywords: ['tazas a ml', 'tazas a mililitros', 'cups a ml', 'convertir tazas a ml', 'cocina medidas tazas', 'taza a mililitros', 'cuantos ml son una taza', 'medidas cocina americana', 'conversor cocina', '1 taza en ml', 'recetas tazas a ml'],
   },
 ];
 
