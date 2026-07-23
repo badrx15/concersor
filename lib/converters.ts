@@ -45,7 +45,8 @@ export type WidgetType =
   | 'vat-calculator'
   | 'date-difference'
   | 'discount-calculator'
-  | 'precio-luz';
+  | 'precio-luz'
+  | 'calculadora-gasto';
 
 export interface FaqItem {
   q: string;
@@ -2008,6 +2009,41 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['calculadora-iva', 'calculadora-descuentos', 'conversor-divisas'],
     keywords: ['precio de la luz hoy', 'precio luz hora a hora', 'cuando poner la lavadora', 'luz mas barata hoy', 'precio electricidad españa', 'precio kw hoy', 'tarifa luz por horas', 'mejor hora para poner la lavadora', 'precio luz tiempo real', 'pvpc hoy', 'electricidad precio hora', 'ahorrar luz electrodomesticos', 'precio mercado electrico español', 'luz barata hoy'],
+  },
+
+  // ====================================================================
+  // CALCULADORA DE GASTO ELÉCTRICO
+  // ====================================================================
+  {
+    slug: 'calculadora-gasto-electrico',
+    name: 'Calculadora de Gasto Eléctrico',
+    category: 'texto',
+    icon: '💡',
+    color: '#eab308',
+    widget: 'calculadora-gasto',
+    metaTitle: 'Calculadora de Gasto Eléctrico — Coste electrodomésticos en tiempo real | ConversorPro',
+    metaDescription:
+      'Calcula cuánto gasta cada electrodoméstico con el precio real de la luz. Añade tus aparatos y descubre cuánto consumes al día, mes y año. ¡Gratis!',
+    explanation: [
+      'Esta calculadora te permite saber exactamente cuánto dinero gasta cada electrodoméstico de tu casa según el precio actual de la electricidad. Solo tienes que seleccionar los aparatos que usas o añadir los tuyos propios con su potencia en vatios (W).',
+      'Los resultados se actualizan automáticamente con el precio de la luz en tiempo real, para que sepas si es buen momento para poner la lavadora o si es mejor esperar a horas más baratas.',
+      'La calculadora incluye los electrodomésticos más comunes con sus potencias típicas: nevera, lavadora, lavavajillas, horno, aire acondicionado, calefacción y muchos más. Puedes personalizar las horas de uso de cada uno para adaptarlo a tus rutinas.',
+    ],
+    equivalences: [
+      { from: 'Lavadora (2.000W · 1h)', to: '~0,40 €/lavado (a 20 c€/kWh)' },
+      { from: 'Horno (2.500W · 30min)', to: '~0,25 €/uso' },
+      { from: 'Nevera (200W · 24h)', to: '~0,96 €/día · ~29 €/mes' },
+      { from: 'Aire acondicionado (1.500W · 4h)', to: '~1,20 €/día · ~36 €/mes' },
+      { from: 'Termo eléctrico (1.500W · 3h)', to: '~0,90 €/día · ~27 €/mes' },
+    ],
+    faq: [
+      { q: '¿Cómo calcula el coste?', a: 'Multiplica la potencia del electrodoméstico (en kW) por las horas de uso y por el precio actual de la luz (€/kWh). Coste = Potencia(kW) × Horas × Precio(€/kWh).' },
+      { q: '¿Los precios de la luz son actuales?', a: 'Sí. La calculadora obtiene el precio actual del mercado mayorista eléctrico español (PVPC) en tiempo real a través de la API de ENTSO-E.' },
+      { q: '¿Dónde encuentro la potencia de mis electrodomésticos?', a: 'La potencia en vatios (W) suele venir en una etiqueta en la parte trasera o inferior del aparato. También puedes buscarlo en el manual de instrucciones o en la ficha técnica del producto.' },
+      { q: '¿Puedo añadir cualquier aparato?', a: 'Sí. Puedes añadir electrodomésticos personalizados indicando su nombre, potencia en vatios y las horas de uso diario.' },
+    ],
+    related: ['precio-de-la-luz', 'calculadora-iva', 'calculadora-descuentos'],
+    keywords: ['calcular gasto electricidad', 'cuanto gasta cada electrodomestico', 'calculadora consumo electrico', 'gasto luz electrodomesticos', 'consumo lavadora', 'cuanto consume el horno', 'calcular factura luz', 'ahorrar electricidad casa', 'consumo electrodomesticos hogar', 'calculadora kw hora', 'precio electricidad electrodomesticos', 'consumo nevera watios', 'simulador factura luz', 'calcular consumo kWh', 'electrodomesticos mas gastan'],
   },
 ];
 
