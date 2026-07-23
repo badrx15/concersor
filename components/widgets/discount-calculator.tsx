@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { InputGroup } from './shared';
 
 type DiscountMode = 'final-price' | 'saved' | 'what-pct';
 
@@ -53,17 +54,15 @@ export function DiscountCalculatorWidget() {
       </div>
 
       <div className="space-y-3">
-        <div>
-          <label className="text-sm font-medium text-slate-300">Precio original (€)</label>
+        <InputGroup label="Precio original (€)" tooltip="El precio del producto o servicio antes de aplicar cualquier descuento o rebaja.">
           <input type="number" value={originalPrice} onChange={e => setOriginalPrice(e.target.value)} placeholder="Ej: 100"
-            className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-        </div>
+            className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+        </InputGroup>
 
         {(mode === 'final-price' || mode === 'saved') ? (
-          <div>
-            <label className="text-sm font-medium text-slate-300">Descuento (%)</label>
+          <InputGroup label="Descuento (%)" tooltip="El porcentaje de descuento que se aplica al precio original. Puedes usar los botones rápidos o escribir un valor personalizado.">
             <input type="number" value={discountPct} onChange={e => setDiscountPct(e.target.value)} placeholder="Ej: 20"
-              className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
             <div className="mt-2 flex gap-1.5 flex-wrap">
               {[5, 10, 15, 20, 25, 30, 40, 50].map(p => (
                 <button key={p} onClick={() => setDiscountPct(String(p))}
@@ -76,13 +75,12 @@ export function DiscountCalculatorWidget() {
                 </button>
               ))}
             </div>
-          </div>
+          </InputGroup>
         ) : (
-          <div>
-            <label className="text-sm font-medium text-slate-300">Precio final (€)</label>
+          <InputGroup label="Precio final (€)" tooltip="El precio ya rebajado que pagaste realmente. La calculadora determinará el porcentaje de descuento que te aplicaron.">
             <input type="number" value={salePrice} onChange={e => setSalePrice(e.target.value)} placeholder="Ej: 80"
-              className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-          </div>
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+          </InputGroup>
         )}
       </div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { InputGroup } from './shared';
 
 type PctMode = 'pct-of' | 'what-pct' | 'pct-change';
 
@@ -57,40 +58,34 @@ export function PercentageCalculatorWidget() {
 
       {mode === 'pct-of' && (
         <div className="space-y-3">
-          <div>
-            <label className="text-sm font-medium text-slate-300">Cantidad</label>
-            <input type="number" value={value} onChange={e => setValue(e.target.value)} placeholder="Ej: 200" className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-          </div>
-          <div>
-            <label className="text-sm font-medium text-slate-300">Porcentaje (%)</label>
-            <input type="number" value={percent} onChange={e => setPercent(e.target.value)} placeholder="Ej: 15" className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-          </div>
+          <InputGroup label="Cantidad" tooltip="La cantidad total sobre la que quieres calcular el porcentaje.">
+            <input type="number" value={value} onChange={e => setValue(e.target.value)} placeholder="Ej: 200" className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+          </InputGroup>
+          <InputGroup label="Porcentaje (%)" tooltip="El porcentaje que quieres aplicar. Ejemplo: el 15% de 200 = 30.">
+            <input type="number" value={percent} onChange={e => setPercent(e.target.value)} placeholder="Ej: 15" className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+          </InputGroup>
         </div>
       )}
 
       {mode === 'what-pct' && (
         <div className="space-y-3">
-          <div>
-            <label className="text-sm font-medium text-slate-300">Valor</label>
-            <input type="number" value={value} onChange={e => setValue(e.target.value)} placeholder="Ej: 30" className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-          </div>
-          <div>
-            <label className="text-sm font-medium text-slate-300">Total</label>
-            <input type="number" value={total} onChange={e => setTotal(e.target.value)} placeholder="Ej: 200" className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-          </div>
+          <InputGroup label="Valor" tooltip="La cantidad parcial que representa un porcentaje del total.">
+            <input type="number" value={value} onChange={e => setValue(e.target.value)} placeholder="Ej: 30" className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+          </InputGroup>
+          <InputGroup label="Total" tooltip="La cantidad total o completa. El valor será calculado como porcentaje de este total.">
+            <input type="number" value={total} onChange={e => setTotal(e.target.value)} placeholder="Ej: 200" className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+          </InputGroup>
         </div>
       )}
 
       {mode === 'pct-change' && (
         <div className="space-y-3">
-          <div>
-            <label className="text-sm font-medium text-slate-300">Valor anterior</label>
-            <input type="number" value={oldVal} onChange={e => setOldVal(e.target.value)} placeholder="Ej: 50" className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-          </div>
-          <div>
-            <label className="text-sm font-medium text-slate-300">Valor nuevo</label>
-            <input type="number" value={newVal} onChange={e => setNewVal(e.target.value)} placeholder="Ej: 75" className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-          </div>
+          <InputGroup label="Valor anterior" tooltip="La cantidad original antes del cambio o variación.">
+            <input type="number" value={oldVal} onChange={e => setOldVal(e.target.value)} placeholder="Ej: 50" className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+          </InputGroup>
+          <InputGroup label="Valor nuevo" tooltip="La cantidad después del cambio. Se calculará la variación porcentual respecto al valor anterior.">
+            <input type="number" value={newVal} onChange={e => setNewVal(e.target.value)} placeholder="Ej: 75" className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+          </InputGroup>
         </div>
       )}
 

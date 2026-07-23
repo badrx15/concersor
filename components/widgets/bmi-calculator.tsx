@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { InputGroup } from './shared';
 
 type Units = 'metric' | 'imperial';
 
@@ -52,26 +53,24 @@ export function BmiCalculatorWidget() {
         </button>
       </div>
 
-      <div>
-        <label className="text-sm font-medium text-slate-300">Peso ({units === 'metric' ? 'kg' : 'libras'})</label>
-        <input type="number" value={weight} onChange={e => setWeight(e.target.value)} placeholder={units === 'metric' ? 'Ej: 70' : 'Ej: 154'} className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-      </div>
+      <InputGroup label={"Peso (" + (units === 'metric' ? 'kg' : 'libras') + ")"} tooltip="Tu peso corporal actual. En el sistema métrico usa kilogramos (kg), en el imperial usa libras (lb).">
+        <input type="number" value={weight} onChange={e => setWeight(e.target.value)} placeholder={units === 'metric' ? 'Ej: 70' : 'Ej: 154'} className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+      </InputGroup>
 
       {units === 'metric' ? (
-        <div>
-          <label className="text-sm font-medium text-slate-300">Altura (cm)</label>
-          <input type="number" value={height} onChange={e => setHeight(e.target.value)} placeholder="Ej: 175" className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-        </div>
+        <InputGroup label="Altura (cm)" tooltip="Tu estatura en centímetros. Ejemplo: 175 cm es una altura común.">
+          <input type="number" value={height} onChange={e => setHeight(e.target.value)} placeholder="Ej: 175" className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+        </InputGroup>
       ) : (
         <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="text-sm font-medium text-slate-300">Pies</label>
-            <input type="number" value={feet} onChange={e => setFeet(e.target.value)} placeholder="Ej: 5" className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-          </div>
-          <div>
-            <label className="text-sm font-medium text-slate-300">Pulgadas</label>
-            <input type="number" value={inches} onChange={e => setInches(e.target.value)} placeholder="Ej: 9" className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-          </div>
+          <InputGroup label="Pies" tooltip={'La parte entera de tu altura en pies. Ejemplo: 5 pies para una altura de 5\'9".'}>
+
+            <input type="number" value={feet} onChange={e => setFeet(e.target.value)} placeholder="Ej: 5" className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+          </InputGroup>
+          <InputGroup label="Pulgadas" tooltip={'Las pulgadas restantes de tu altura. Ejemplo: 9 pulgadas para una altura de 5\'9".'}>
+
+            <input type="number" value={inches} onChange={e => setInches(e.target.value)} placeholder="Ej: 9" className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+          </InputGroup>
         </div>
       )}
 

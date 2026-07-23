@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { InputGroup } from './shared';
 
 export function DateDifferenceWidget() {
   const today = new Date();
@@ -78,40 +79,34 @@ export function DateDifferenceWidget() {
 
       {mode === 'diff' ? (
         <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="text-sm font-medium text-slate-300">Fecha inicio</label>
+          <InputGroup label="Fecha inicio" tooltip="El día desde el que quieres comenzar a contar. Por defecto, el primer día del mes actual.">
             <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)}
-              className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white [color-scheme:dark]" />
-          </div>
-          <div>
-            <label className="text-sm font-medium text-slate-300">Fecha fin</label>
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white [color-scheme:dark]" />
+          </InputGroup>
+          <InputGroup label="Fecha fin" tooltip="La fecha hasta la que quieres calcular la diferencia. Por defecto, el día de hoy.">
             <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)}
-              className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white [color-scheme:dark]" />
-          </div>
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white [color-scheme:dark]" />
+          </InputGroup>
         </div>
       ) : (
         <div className="space-y-3">
-          <div>
-            <label className="text-sm font-medium text-slate-300">Fecha base</label>
+          <InputGroup label="Fecha base" tooltip="La fecha a partir de la cual sumarás o restarás años, meses y días.">
             <input type="date" value={baseDate} onChange={e => setBaseDate(e.target.value)}
-              className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white [color-scheme:dark]" />
-          </div>
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white [color-scheme:dark]" />
+          </InputGroup>
           <div className="grid grid-cols-3 gap-3">
-            <div>
-              <label className="text-sm font-medium text-slate-300">Años</label>
+            <InputGroup label="Años" tooltip="Cantidad de años a sumar (usa negativo para restar, ej: -1).">
               <input type="number" value={addYears} onChange={e => setAddYears(e.target.value)} placeholder="0"
-                className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-            </div>
-            <div>
-              <label className="text-sm font-medium text-slate-300">Meses</label>
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+            </InputGroup>
+            <InputGroup label="Meses" tooltip="Cantidad de meses a sumar (usa negativo para restar, ej: -3).">
               <input type="number" value={addMonths} onChange={e => setAddMonths(e.target.value)} placeholder="0"
-                className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-            </div>
-            <div>
-              <label className="text-sm font-medium text-slate-300">Días</label>
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+            </InputGroup>
+            <InputGroup label="Días" tooltip="Cantidad de días a sumar (usa negativo para restar, ej: -15).">
               <input type="number" value={addDays} onChange={e => setAddDays(e.target.value)} placeholder="0"
-                className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
-            </div>
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
+            </InputGroup>
           </div>
           <p className="text-xs text-slate-500">Usa valores negativos para restar (ej: -5 días)</p>
         </div>

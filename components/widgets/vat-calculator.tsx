@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { InputGroup } from './shared';
 
 export function VatCalculatorWidget() {
   const [amount, setAmount] = useState('');
@@ -36,19 +37,20 @@ export function VatCalculatorWidget() {
         </button>
       </div>
 
-      <div>
-        <label className="text-sm font-medium text-slate-300">
-          {mode === 'add' ? 'Precio sin IVA' : 'Precio con IVA incluido'}
-        </label>
-        <div className="relative mt-1">
+      <InputGroup
+        label={mode === 'add' ? 'Precio sin IVA' : 'Precio con IVA incluido'}
+        tooltip={mode === 'add'
+          ? 'Introduce el precio base sin impuestos. Se le añadirá el IVA correspondiente.'
+          : 'Introduce el precio total que ya incluye el IVA. Se calculará la base imponible y el IVA desglosado.'}
+      >
+        <div className="relative">
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">€</span>
           <input type="number" value={amount} onChange={e => setAmount(e.target.value)} placeholder="0.00"
             className="w-full pl-8 pr-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder-slate-500" />
         </div>
-      </div>
+      </InputGroup>
 
-      <div>
-        <label className="text-sm font-medium text-slate-300">Tipo de IVA: <span className="text-brand-300 font-bold">{rate}%</span></label>
+      <InputGroup label={'Tipo de IVA: ' + rate + '%'} tooltip="Elige el tipo de IVA a aplicar. En España: 4% (superreducido), 10% (reducido), 21% (general). Usa el deslizador para otros valores.">
         <div className="flex gap-2 mt-2">
           {[4, 10, 21].map(r => (
             <button key={r} onClick={() => setRate(r)}
@@ -58,7 +60,7 @@ export function VatCalculatorWidget() {
           ))}
         </div>
         <input type="range" min={0} max={27} value={rate} onChange={e => setRate(+e.target.value)} className="w-full accent-brand-500 mt-2" />
-      </div>
+      </InputGroup>
 
       {result && (
         <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">

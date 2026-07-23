@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { CopyButton } from './shared';
+import { CopyButton, InputGroup } from './shared';
 
 function formatUnit(value: number, singular: string, plural: string): string {
   return `${value} ${value === 1 ? singular : plural}`;
@@ -119,10 +119,7 @@ export function AgeCalculatorWidget() {
   return (
     <div className="space-y-5">
       {/* Date picker */}
-      <div>
-        <label className="block text-sm font-semibold text-slate-200 mb-2">
-          🎂 Fecha de nacimiento
-        </label>
+      <InputGroup label="🎂 Fecha de nacimiento" tooltip="Selecciona tu fecha de nacimiento para calcular tu edad exacta en años, meses, días, horas, minutos y segundos. ¡El contador se actualiza en tiempo real!">
         <input
           type="date"
           value={birthDateStr}
@@ -130,7 +127,7 @@ export function AgeCalculatorWidget() {
           max={new Date().toISOString().split('T')[0]}
           className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition"
         />
-      </div>
+      </InputGroup>
 
       {!valid && (
         <p className="text-amber-400 text-sm">⚠️ La fecha debe ser anterior a hoy.</p>

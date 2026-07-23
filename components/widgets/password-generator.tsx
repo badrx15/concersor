@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { InputGroup } from './shared';
 
 function generatePassword(length: number, useUpper: boolean, useLower: boolean, useDigits: boolean, useSymbols: boolean): string {
   const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -62,23 +63,29 @@ export function PasswordGeneratorWidget() {
 
   return (
     <div className="space-y-4">
-      <div>
-        <label className="text-sm font-medium text-slate-300">Longitud: <span className="text-brand-300 font-bold">{length}</span></label>
-        <input type="range" min={4} max={64} value={length} onChange={e => { setLength(+e.target.value); setPassword(''); }} className="w-full accent-brand-500 mt-2" />
-        <div className="flex justify-between text-xs text-slate-500"><span>4</span><span>64</span></div>
-      </div>
+      <InputGroup label={'Longitud: ' + length} tooltip="La longitud de la contraseña. A mayor longitud, más segura. Se recomienda al menos 12 caracteres, idealmente 16 o más.">
+        <input type="range" min={4} max={64} value={length} onChange={e => { setLength(+e.target.value); setPassword(''); }} className="w-full accent-brand-500" />
+        <div className="flex justify-between text-xs text-slate-500 mt-1"><span>4</span><span>64</span></div>
+      </InputGroup>
 
       <div className="space-y-2">
         {[
-          { id: 'upper', label: 'Mayúsculas (A-Z)', val: useUpper, set: setUseUpper },
-          { id: 'lower', label: 'Minúsculas (a-z)', val: useLower, set: setUseLower },
-          { id: 'digits', label: 'Números (0-9)', val: useDigits, set: setUseDigits },
-          { id: 'symbols', label: 'Símbolos (!@#$%)', val: useSymbols, set: setUseSymbols },
-        ].map(({ id, label, val, set }) => (
-          <label key={id} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-800/40 border border-slate-700/50 cursor-pointer hover:bg-slate-800/60 transition">
-            <input type="checkbox" checked={val} onChange={() => { set(!val); setPassword(''); }} className="w-4 h-4 accent-brand-500" />
-            <span className="text-sm text-slate-300">{label}</span>
-          </label>
+          { id: 'upper', label: 'Mayúsculas (A-Z)', val: useUpper, set: setUseUpper, tip: 'Incluye letras A-Z mayúsculas. Aumenta la complejidad y seguridad.' },
+          { id: 'lower', label: 'Minúsculas (a-z)', val: useLower, set: setUseLower, tip: 'Incluye letras a-z minúsculas. Es la base de cualquier contraseña.' },
+          { id: 'digits', label: 'Números (0-9)', val: useDigits, set: setUseDigits, tip: 'Incluye dígitos del 0 al 9. Añade variedad y dificulta ataques de diccionario.' },
+          { id: 'symbols', label: 'Símbolos (!@#$%)', val: useSymbols, set: setUseSymbols, tip: 'Incluye caracteres especiales. Son los que más aumentan la fortaleza de la contraseña.' },
+        ].map(({ id, label, val, set, tip }) => (
+          <div key={id} className="group relative">
+            <label className="flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-800/40 border border-slate-700/50 cursor-pointer hover:bg-slate-800/60 transition">
+              <input type="checkbox" checked={val} onChange={() => { set(!val); setPassword(''); }} className="w-4 h-4 accent-brand-500" />
+              <span className="text-sm text-slate-300">{label}</span>
+              <span className="ml-auto inline-flex items-center justify-center w-[18px] h-[18px] rounded-full bg-slate-700/60 text-[10px] text-slate-400 cursor-help hover:bg-slate-600 hover:text-slate-200 transition-all select-none">?</span>
+            </label>
+            <div className="absolute bottom-full right-0 mb-2 px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-600 shadow-2xl text-xs text-slate-200 leading-relaxed opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none w-64 whitespace-normal">
+              {tip}
+              <div className="absolute top-full right-6 -mt-px border-[6px] border-transparent border-t-slate-600" />
+            </div>
+          </div>
         ))}
       </div>
 

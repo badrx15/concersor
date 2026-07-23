@@ -114,6 +114,42 @@ export function ErrorBox({ message }: { message: string }) {
   );
 }
 
+// ============================================================
+// INPUT GROUP CON TOOLTIP — para calculadoras
+// ============================================================
+
+export function InputGroup({
+  label,
+  tooltip,
+  className,
+  children,
+}: {
+  label: string;
+  tooltip?: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={className}>
+      <div className="flex items-start gap-2 mb-1">
+        <label className="text-sm font-medium text-slate-300">{label}</label>
+        {tooltip && (
+          <div className="group relative inline-flex shrink-0 mt-0.5">
+            <span className="inline-flex items-center justify-center w-[18px] h-[18px] rounded-full bg-slate-700/80 text-[11px] text-slate-400 cursor-help hover:bg-slate-600 hover:text-slate-200 transition-all select-none">
+              ?
+            </span>
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-600 shadow-2xl text-xs text-slate-200 leading-relaxed opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none w-64 whitespace-normal">
+              {tooltip}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-[6px] border-transparent border-t-slate-600" />
+            </div>
+          </div>
+        )}
+      </div>
+      {children}
+    </div>
+  );
+}
+
 /** Carga un script desde CDN de forma lazy (para jsPDF, pdf-lib, pdf.js, etc.) */
 const scriptCache: Record<string, Promise<void>> = {};
 export function loadScript(src: string): Promise<void> {
