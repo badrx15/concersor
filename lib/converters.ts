@@ -44,7 +44,8 @@ export type WidgetType =
   | 'password-generator'
   | 'vat-calculator'
   | 'date-difference'
-  | 'discount-calculator';
+  | 'discount-calculator'
+  | 'precio-luz';
 
 export interface FaqItem {
   q: string;
@@ -1974,6 +1975,39 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['calculadora-porcentaje', 'calculadora-iva', 'conversor-divisas'],
     keywords: ['calculadora descuento', 'calcular descuento', 'precio con descuento', 'cuanto ahorro', 'descuento porcentaje', 'calcular precio final', 'rebajas calculadora', 'black friday calculadora', 'descuento online', 'porcentaje descuento', 'calcular ahorro'],
+  },
+
+  // ====================================================================
+  // HERRAMIENTAS EN TIEMPO REAL
+  // ====================================================================
+  {
+    slug: 'precio-de-la-luz',
+    name: 'Precio de la Luz hoy',
+    category: 'texto',
+    icon: '⚡',
+    color: '#eab308',
+    widget: 'precio-luz',
+    metaTitle: 'Precio de la Luz hoy por horas — España en tiempo real | ConversorPro',
+    metaDescription:
+      'Consulta el precio de la luz en España hora por hora. Sabrás cuándo es más barato poner la lavadora, el horno o cargar el coche eléctrico. Datos en tiempo real.',
+    explanation: [
+      'Consulta el precio de la electricidad en España (PVPC - mercado mayorista) hora por hora. Los datos se obtienen de ENTSO-E a través de Elecz y se actualizan cada pocos minutos.',
+      'Saber cuándo la luz es más barata te permite ahorrar en tu factura eléctrica programando el uso de electrodomésticos como la lavadora, el lavavajillas, el horno o la carga del coche eléctrico en las horas más económicas.',
+      'Las horas más baratas suelen concentrarse en la madrugada y primeras horas de la tarde. Evita las horas punta (generalmente 10-14h y 18-22h) para consumir menos.',
+    ],
+    equivalences: [
+      { from: 'Hora punta', to: 'Precio más caro del día' },
+      { from: 'Hora valle', to: 'Precio más barato del día' },
+      { from: 'Hora llana', to: 'Precio intermedio' },
+    ],
+    faq: [
+      { q: '¿Estos precios son los del PVPC?', a: 'Sí, los precios mostrados corresponden al mercado mayorista diario (pool), que es la referencia para el PVPC (Precio Voluntario para el Pequeño Consumidor) y muchas tarifas indexadas.' },
+      { q: '¿Cada cuánto se actualizan los precios?', a: 'Los precios se actualizan automáticamente cada 5 minutos. Los datos provienen de ENTSO-E, la plataforma europea de transparencia eléctrica.' },
+      { q: '¿A qué hora es más barata la luz?', a: 'Generalmente, las horas más baratas suelen ser de madrugada (00:00-06:00) y primeras horas de la tarde (12:00-15:00). Sin embargo, los precios varían cada día según la demanda y la generación renovable.' },
+      { q: '¿Cómo puedo ahorrar con esta información?', a: 'Programa tus electrodomésticos (lavadora, lavavajillas, horno) y la carga de tu coche eléctrico en las horas más baratas del día. La herramienta te muestra las horas más económicas para que puedas planificar.' },
+    ],
+    related: ['calculadora-iva', 'calculadora-descuentos', 'conversor-divisas'],
+    keywords: ['precio de la luz hoy', 'precio luz hora a hora', 'cuando poner la lavadora', 'luz mas barata hoy', 'precio electricidad españa', 'precio kw hoy', 'tarifa luz por horas', 'mejor hora para poner la lavadora', 'precio luz tiempo real', 'pvpc hoy', 'electricidad precio hora', 'ahorrar luz electrodomesticos', 'precio mercado electrico español', 'luz barata hoy'],
   },
 ];
 

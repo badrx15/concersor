@@ -25,6 +25,7 @@ import { PasswordGeneratorWidget } from './widgets/password-generator';
 import { VatCalculatorWidget } from './widgets/vat-calculator';
 import { DateDifferenceWidget } from './widgets/date-difference';
 import { DiscountCalculatorWidget } from './widgets/discount-calculator';
+import { PrecioLuzWidget } from './widgets/precio-luz';
 
 // Skeleton para widgets lazy
 function WidgetSkeleton() {
@@ -105,6 +106,8 @@ export function ConverterWidget({ converter }: Props) {
       return <DateDifferenceWidget />;
     case 'discount-calculator':
       return <DiscountCalculatorWidget />;
+    case 'precio-luz':
+      return <PrecioLuzWidget />;
     case 'utility-tools':
       return <UtilityToolsWidget tool={(converter.widgetConfig?.tool as any) || 'markdown'} />;
     default:
