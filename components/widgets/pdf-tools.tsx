@@ -2,6 +2,11 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { FileDrop, DownloadButton, ErrorBox, formatBytes } from './shared';
+import * as pdfjsLib from 'pdfjs-dist';
+
+if (typeof window !== 'undefined') {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+}
 
 type PdfTool = 'merge' | 'split' | 'remove-pages' | 'rotate' | 'protect' | 'unlock' | 'organize' | 'page-numbers' | 'watermark';
 
@@ -118,15 +123,65 @@ export function PdfToolsWidget({ tool }: Props) {
       }
 
       else if (tool === 'protect') {
-        setError('⚠️ La protección con contraseña requiere una librería de cifrado que no está disponible en esta versión. Mientras tanto, puedes usar otras herramientas como unir o comprimir PDF.');
-        setBusy(false);
-        return;
+        const { encryptPDF } = await import('@pdfsmaller/pdf-encrypt-lite');
+        const data = await file!.arrayBuffer();
+        setProgress('Cifrando PDF...');
+        const encryptedBytes = await encryptPDF(new Uint8Array(data), password);
+        const blob = new Blob([encryptedBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
+        setResult({
+          url: URL.createObjectURL(blob),
+          name: file!.name.replace(/\.pdf$/i, '') + '-protegido.pdf',
+          size: blob.size,
+          original: file!.size,
+        });
       }
 
       else if (tool === 'unlock') {
-        setError('🔓 Para desbloquear un PDF protegido, necesitas la contraseña correcta. La librería actual no soporta desbloqueo. Prueba con otras herramientas como dividir o rotar PDF.');
-        setBusy(false);
-        return;
+        if (!password) { setError('Introduce la contraseña del PDF'); setBusy(false); return; }
+        const data = await file!.arrayBuffer();
+        setProgress('Verificando contraseña...');
+
+        // Load with pdfjs-dist using password (it handles decryption)
+        const pdf = await pdfjsLib.getDocument({ data, password }).promise;
+
+        // Create a new unencrypted PDF from rendered pages
+        const newPdf = await PDFDocument.create();
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+          setProgress(`Procesando página ${i} de ${pdf.numPages}...`);
+          const page = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 1.5 });
+          const canvas = document.createElement('canvas');
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('No se pudo crear el contexto de renderizado');
+          await page.render({ canvas, viewport }).promise;
+
+          // Convert canvas to JPEG bytes
+          const jpgBlob = await new Promise<Blob>((resolve) =>
+            canvas.toBlob((b: Blob | null) => resolve(b!), 'image/jpeg', 0.92)
+          );
+          const jpgBytes = await jpgBlob.arrayBuffer();
+          const jpgImage = await newPdf.embedJpg(jpgBytes);
+
+          const pdfPage = newPdf.addPage([jpgImage.width, jpgImage.height]);
+          pdfPage.drawImage(jpgImage, {
+            x: 0,
+            y: 0,
+            width: jpgImage.width,
+            height: jpgImage.height,
+          });
+        }
+
+        const bytes = await newPdf.save();
+        const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' });
+        setResult({
+          url: URL.createObjectURL(blob),
+          name: file!.name.replace(/\.pdf$/i, '') + '-desbloqueado.pdf',
+          size: blob.size,
+          original: file!.size,
+        });
       }
 
       else if (tool === 'organize') {
