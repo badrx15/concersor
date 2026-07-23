@@ -17,6 +17,8 @@ import { NumbersToWordsWidget } from './widgets/numbers-to-words';
 import { DevToolsWidget } from './widgets/dev-tools';
 import { BarcodeGeneratorWidget } from './widgets/barcode-generator';
 import { UtilityToolsWidget } from './widgets/utility-tools';
+import { HeicToJpgWidget } from './widgets/heic-to-jpg';
+import { GifVideoWidget } from './widgets/gif-video';
 
 // Skeleton para widgets lazy
 function WidgetSkeleton() {
@@ -81,6 +83,10 @@ export function ConverterWidget({ converter }: Props) {
       return <DevToolsWidget tool={(converter.widgetConfig?.tool as any) || 'hash'} />;
     case 'barcode-generator':
       return <BarcodeGeneratorWidget />;
+    case 'heic-to-jpg':
+      return <HeicToJpgWidget />;
+    case 'gif-video':
+      return <GifVideoWidget />;
     case 'utility-tools':
       return <UtilityToolsWidget tool={(converter.widgetConfig?.tool as any) || 'markdown'} />;
     default:

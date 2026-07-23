@@ -12,6 +12,9 @@
     "@pdfsmaller/pdf-encrypt-lite": "^1.0.2",
     "docx": "^9.7.1",
     "exif-js": "^2.3.0",
+    "gif.js": "^0.2.0",
+    "gifuct-js": "^2.1.2",
+    "heic2any": "^0.0.4",
     "jsbarcode": "^3.12.3",
     "jspdf": "^4.2.1",
     "jszip": "^3.10.1",
@@ -27,6 +30,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/gif.js": "^0.2.5",
     "@types/marked": "^5.0.2",
     "@types/node": "^20",
     "@types/qrcode": "^1.5.6",

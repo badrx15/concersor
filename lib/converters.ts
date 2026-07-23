@@ -36,7 +36,9 @@ export type WidgetType =
   | 'numbers-to-words'
   | 'dev-tools'
   | 'barcode-generator'
-  | 'utility-tools';
+  | 'utility-tools'
+  | 'heic-to-jpg'
+  | 'gif-video';
 
 export interface FaqItem {
   q: string;
@@ -1704,6 +1706,64 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['contador-palabras', 'mayusculas-a-minusculas', 'conversor-markdown'],
     keywords: ['voz a texto', 'reconocimiento de voz', 'dictado online', 'transcribir audio', 'speech to text', 'voz a texto gratis', 'escribir hablando', 'notas de voz texto'],
+  },
+
+  // ====================================================================
+  // ARCHIVOS — HEIC Y GIF
+  // ====================================================================
+  {
+    slug: 'heic-a-jpg',
+    name: 'HEIC a JPG',
+    category: 'archivos',
+    icon: '📱',
+    color: '#f97316',
+    widget: 'heic-to-jpg',
+    metaTitle: 'HEIC a JPG — Convertir fotos HEIC de iPhone a JPG gratis | ConversorPro',
+    metaDescription:
+      'Convierte fotos HEIC/HEIF de iPhone a JPG. 100% en tu navegador, sin subir archivos. Control de calidad. Gratis.',
+    explanation: [
+      'Convierte fotos en formato HEIC (formato por defecto del iPhone) a JPG directamente en tu navegador. El procesamiento es 100% local usando la librería heic2any.',
+      'El formato HEIC es más eficiente que JPG, pero no es compatible con todos los dispositivos y aplicaciones. Al convertir a JPG obtienes un archivo universal que se abre en cualquier programa.',
+    ],
+    equivalences: [
+      { from: 'HEIC ~2 MB', to: 'JPG ~2.5 MB (calidad 92)' },
+      { from: 'HEIC ~5 MB', to: 'JPG ~6 MB (calidad 92)' },
+    ],
+    faq: [
+      { q: '¿Qué es HEIC?', a: 'HEIC (High Efficiency Image Container) es el formato de imagen por defecto del iPhone desde iOS 11. Usa compresión HEVC y ocupa menos espacio que JPG manteniendo calidad similar.' },
+      { q: '¿Se suben mis fotos a un servidor?', a: 'No. La conversión se realiza enteramente en tu navegador. Tus fotos nunca salen de tu dispositivo.' },
+      { q: '¿Puedo ajustar la calidad del JPG?', a: 'Sí. El conversor permite ajustar la calidad de 10 a 100. Un valor de 85-92 ofrece un buen equilibrio entre calidad y tamaño.' },
+    ],
+    related: ['png-a-jpg', 'imagen-a-webp', 'comprimir-imagen'],
+    keywords: ['heic a jpg', 'convertir heic', 'fotos iphone a jpg', 'heic a jpg online', 'pasar heic a jpg', 'iphone HEIC convertir', 'formato HEIC iPhone', 'abrir HEIC en pc', 'convertir fotos heic', 'heif a jpg', 'imagen HEIC a JPG'],
+  },
+  {
+    slug: 'video-a-gif',
+    name: 'Video a GIF',
+    category: 'archivos',
+    icon: '🎬',
+    color: '#f97316',
+    widget: 'gif-video',
+    widgetConfig: { mode: 'video-to-gif' },
+    metaTitle: 'Video a GIF — Convertir MP4 a GIF online gratis | ConversorPro',
+    metaDescription:
+      'Convierte videos (MP4, WebM, MOV) a GIF animado. También convierte GIF a video WebM. 100% en tu navegador, gratis.',
+    explanation: [
+      'Convierte tus videos a GIF animado directamente en tu navegador, sin instalar software ni subir archivos. También puedes convertir GIF a video WebM.',
+      'El conversor extrae frames del video a 10 fps y genera un GIF optimizado con un ancho máximo de 480px para mantener un tamaño de archivo razonable. Para videos largos, se capturan un máximo de 150 frames.',
+    ],
+    equivalences: [
+      { from: 'Video MP4 30s', to: 'GIF ~2-5 MB' },
+      { from: 'Video MP4 10s', to: 'GIF ~1-2 MB' },
+      { from: 'GIF animado', to: 'Video WebM' },
+    ],
+    faq: [
+      { q: '¿Qué formato de video puedo convertir?', a: 'Aceptamos MP4, WebM, AVI, MOV y MKV. El formato de salida del GIF dependerá del video de origen.' },
+      { q: '¿Hay límite de duración?', a: 'Se capturan hasta 150 frames a 10 fps, lo que equivale a unos 15 segundos de video. Para videos más largos, solo se procesan los primeros frames.' },
+      { q: '¿Se sube mi video a un servidor?', a: 'No. Todo el procesamiento es local en tu navegador usando canvas, gif.js y MediaRecorder API.' },
+    ],
+    related: ['heic-a-jpg', 'png-a-jpg', 'imagen-a-webp'],
+    keywords: ['video a gif', 'mp4 a gif', 'convertir video a gif', 'crear gif desde video', 'video a gif online', 'gif animado online', 'extraer gif de video', 'generador de gifs', 'gif a video', 'webm a gif'],
   },
 ];
 
