@@ -480,7 +480,7 @@ export function Impresion3DWidget() {
                     </span>
                     <span className="text-xs font-semibold text-slate-200 tabular-nums">
                       {eur(b.value)}
-                      <span className="text-slate-500 font-normal"> · {fmt((b.value / result.perPiece) * 100, 0)}%</span>
+                      <span className="text-slate-500 font-normal"> · {fmt(result.perPiece > 0 ? (b.value / result.perPiece) * 100 : 0, 0)}%</span>
                     </span>
                   </div>
                   <div className="h-2 rounded-full bg-slate-800 overflow-hidden">
