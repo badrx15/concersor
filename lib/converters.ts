@@ -46,7 +46,8 @@ export type WidgetType =
   | 'date-difference'
   | 'discount-calculator'
   | 'precio-luz'
-  | 'calculadora-gasto';
+  | 'calculadora-gasto'
+  | 'impresion-3d';
 
 export interface FaqItem {
   q: string;
@@ -2044,6 +2045,42 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['precio-de-la-luz', 'calculadora-iva', 'calculadora-descuentos'],
     keywords: ['calcular gasto electricidad', 'cuanto gasta cada electrodomestico', 'calculadora consumo electrico', 'gasto luz electrodomesticos', 'consumo lavadora', 'cuanto consume el horno', 'calcular factura luz', 'ahorrar electricidad casa', 'consumo electrodomesticos hogar', 'calculadora kw hora', 'precio electricidad electrodomesticos', 'consumo nevera watios', 'simulador factura luz', 'calcular consumo kWh', 'electrodomesticos mas gastan'],
+  },
+
+  // ====================================================================
+  // CALCULADORA DE COSTES DE IMPRESIÓN 3D
+  // ====================================================================
+  {
+    slug: 'calculadora-impresion-3d',
+    name: 'Calculadora de Impresión 3D',
+    category: 'texto',
+    icon: '🖨️',
+    color: '#8b5cf6',
+    widget: 'impresion-3d',
+    metaTitle: 'Calculadora de Costes de Impresión 3D — Cuánto cuesta una pieza | ConversorPro',
+    metaDescription:
+      'Calcula cuánto cuesta imprimir una pieza en 3D: material, electricidad, amortización de la impresora y precio de venta recomendado. Gratis y sin registro.',
+    explanation: [
+      'Esta calculadora te permite saber exactamente cuánto cuesta fabricar una pieza con tu impresora 3D. Solo tienes que indicar el material y su consumo por pieza, el tiempo de impresión y el precio de la electricidad, y obtendrás el coste real desglosado.',
+      'El coste total incluye el filamento (o resina), el consumo eléctrico de la impresora, la amortización del equipo según sus horas de vida útil y los costes extra de post-procesado. Además, puedes calcular el precio de venta recomendado aplicando tu margen de beneficio.',
+      'Los datos de consumo de material y tiempo los obtienes gratis al cortar tu modelo en el laminador (Cura, PrusaSlicer, OrcaSlicer...). La calculadora incluye ejemplos rápidos para que veas costes realistas de llaveros, figuras o piezas funcionales.',
+    ],
+    equivalences: [
+      { from: 'Llavero PLA (6g · 30min)', to: '~0,25-0,45 €/pieza' },
+      { from: 'Vaso PLA (45g · 4h)', to: '~1,50-2,50 €/pieza' },
+      { from: 'Figura decorativa (120g · 12h)', to: '~4-7 €/pieza' },
+      { from: 'Miniatura resina (9g · 1,2h)', to: '~0,50-0,90 €/pieza' },
+      { from: 'Pieza PETG funcional (35g · 3,5h)', to: '~1,50-2,80 €/pieza' },
+    ],
+    faq: [
+      { q: '¿Cómo calculo cuánto filamento gasta una pieza?', a: 'Al cortar tu modelo en un laminador (Cura, PrusaSlicer, OrcaSlicer...) el software te indica el peso estimado en gramos y el tiempo de impresión. Solo tienes que copiar esos dos datos en la calculadora.' },
+      { q: '¿Qué potencia consume una impresora 3D?', a: 'Una impresora FDM típica (Ender 3) consume entre 150 y 250 W de media. La cama caliente es el componente que más gasta. Las impresoras de resina consumen bastante menos, unos 50-100 W.' },
+      { q: '¿Cómo se amortiza la impresora?', a: 'Divide el precio que pagaste por la impresora entre las horas de impresión que esperas que dure (típicamente 3.000-8.000 h). El resultado es el coste de amortización por hora, que se suma al de cada pieza.' },
+      { q: '¿Cuánto debo cobrar por vender mis piezas impresas?', a: 'Suma todos los costes (material, luz, amortización y acabado) y aplica un margen de beneficio de entre el 50% y el 150%. La calculadora te muestra el precio recomendado y un redondeo sugerido.' },
+      { q: '¿Vale la pena imprimir o comprar la pieza?', a: 'Con esta calculadora podrás comparar el coste real de imprimir frente al precio de compra. Para piezas pequeñas en PLA el coste suele ser de céntimos, mientras que piezas grandes o de materiales técnicos pueden acercarse al precio de venta.' },
+    ],
+    related: ['calculadora-gasto-electrico', 'precio-de-la-luz', 'calculadora-porcentaje', 'calculadora-iva'],
+    keywords: ['calculadora impresion 3d', 'cuanto cuesta imprimir en 3d', 'coste impresion 3d', 'calcular precio pieza impresion 3d', 'cuanto cuesta una pieza impresa en 3d', 'coste filamento pla', 'calculadora filamento', 'gasto electrico impresora 3d', 'consumo impresora 3d watios', 'amortizar impresora 3d', 'vender piezas impresas 3d', 'precio venta impresion 3d', 'calcular coste resina', 'cuanto gasta una impresora 3d', 'coste por hora impresora 3d', 'impresion 3d rentable', 'negocio impresion 3d', 'precio por gramo impresion 3d', 'como cobrar impresiones 3d', 'simulador coste impresion 3d'],
   },
 ];
 
