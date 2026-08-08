@@ -15,7 +15,7 @@ interface Filament {
   perLiter?: boolean; // la resina se vende por litro
 }
 
-const FILAMENTS: Filament[] = [
+export const FILAMENTS: Filament[] = [
   { id: 'pla', name: 'PLA', pricePerUnit: 20, density: 1.24 },
   { id: 'petg', name: 'PETG', pricePerUnit: 25, density: 1.27 },
   { id: 'abs', name: 'ABS', pricePerUnit: 25, density: 1.04 },
@@ -102,6 +102,24 @@ export function Impresion3DWidget() {
     const p = PRINTERS.find((pr) => pr.id === printerId);
     if (p && p.powerW > 0) setPowerInput(String(p.powerW));
   }, [printerId]);
+
+  // Prefill desde el analizador GCODE/STL (sessionStorage)
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem('impresion3d-prefill');
+      if (raw) {
+        const p = JSON.parse(raw);
+        if (p.qty) setQtyInput(String(p.qty));
+        if (typeof p.hours === 'number' && p.hours > 0) {
+          const whole = Math.floor(p.hours);
+          setHours(whole);
+          setMinutes(Math.round((p.hours - whole) * 60));
+        }
+        if (p.copies) setCopies(p.copies);
+        sessionStorage.removeItem('impresion3d-prefill');
+      }
+    } catch {}
+  }, []);
 
   const useLivePrice = async () => {
     setLiveLoading(true);

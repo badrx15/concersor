@@ -47,7 +47,8 @@ export type WidgetType =
   | 'discount-calculator'
   | 'precio-luz'
   | 'calculadora-gasto'
-  | 'impresion-3d';
+  | 'impresion-3d'
+  | 'gcode-estimator';
 
 export interface FaqItem {
   q: string;
@@ -2081,6 +2082,43 @@ export const CONVERTERS: Converter[] = [
     ],
     related: ['calculadora-gasto-electrico', 'precio-de-la-luz', 'calculadora-porcentaje', 'calculadora-iva'],
     keywords: ['calculadora impresion 3d', 'cuanto cuesta imprimir en 3d', 'coste impresion 3d', 'calcular precio pieza impresion 3d', 'cuanto cuesta una pieza impresa en 3d', 'coste filamento pla', 'calculadora filamento', 'gasto electrico impresora 3d', 'consumo impresora 3d watios', 'amortizar impresora 3d', 'vender piezas impresas 3d', 'precio venta impresion 3d', 'calcular coste resina', 'cuanto gasta una impresora 3d', 'coste por hora impresora 3d', 'impresion 3d rentable', 'negocio impresion 3d', 'precio por gramo impresion 3d', 'como cobrar impresiones 3d', 'simulador coste impresion 3d'],
+  },
+
+  // ====================================================================
+  // ANALIZADOR DE GCODE / STL
+  // ====================================================================
+  {
+    slug: 'analizador-gcode-stl',
+    name: 'Analizador de GCODE y STL',
+    category: 'texto',
+    icon: '📂',
+    color: '#22d3ee',
+    widget: 'gcode-estimator',
+    metaTitle: 'Analizador de GCODE y STL — Tiempo, peso y coste de impresión | ConversorPro',
+    metaDescription:
+      'Sube tu archivo .gcode o .stl y obtén al instante el tiempo estimado de impresión, los gramos de filamento y el coste de la pieza. Gratis y sin instalar nada.',
+    explanation: [
+      'Esta herramienta analiza tu archivo GCODE o STL directamente en el navegador y te dice cuánto tardará la impresión, cuánto filamento consume y cuánto te va a costar la pieza.',
+      'Si subes un GCODE generado con Cura, PrusaSlicer u OrcaSlicer, se leen los metadatos exactos que el laminador guarda (tiempo y filamento). Si no los tiene, se hace una estimación muy aproximada analizando los movimientos del cabezal (extrusiones E, velocidades F y desplazamientos).',
+      'Con un archivo STL se calcula el volumen del modelo y, según el porcentaje de relleno que elijas, se estima el peso y el tiempo. Todos los datos se pueden pasar con un clic a la calculadora completa de costes de impresión 3D, que añade la amortización de la impresora y el precio de venta.',
+    ],
+    equivalences: [
+      { from: 'GCODE con metadatos', to: 'Tiempo y filamento exactos del laminador' },
+      { from: 'GCODE sin metadatos', to: 'Estimación por movimientos del cabezal' },
+      { from: 'STL + 20% relleno', to: '≈ 36% del peso sólido (paredes incluidas)' },
+      { from: 'STL + 100% relleno', to: 'Peso sólido completo' },
+      { from: '1 m de filamento PLA 1,75 mm', to: '≈ 2,98 g (densidad 1,24 g/cm³)' },
+    ],
+    faq: [
+      { q: '¿Cómo se calcula el tiempo de impresión?', a: 'Primero se buscan los metadatos que escribe tu laminador (Cura escribe ";TIME:...", PrusaSlicer "; estimated printing time"). Si no existen, se estima sumando el tiempo de cada movimiento del GCODE a partir de las velocidades F y las extrusiones E.' },
+      { q: '¿Cómo se calcula el peso del filamento?', a: 'Si el laminador guarda los gramos (PrusaSlicer) o los metros usados (Cura), se usan directamente. Si no, se suman las extrusiones E (mm de filamento) y se convierten a gramos con la sección del filamento y la densidad del material.' },
+      { q: '¿Qué es el relleno (infill)?', a: 'El porcentaje de material dentro de la pieza. Las paredes y las capas superior e inferior son macizas (~20% del volumen), y el resto se rellena al porcentaje que elijas. A más relleno, más peso, más tiempo y más resistencia.' },
+      { q: '¿Funciona con archivos de Cura y PrusaSlicer?', a: 'Sí. Ambos guardan metadatos con el tiempo y el filamento exactos que el propio laminador calcula. También funciona con archivos sin metadatos, usando la estimación por movimientos.' },
+      { q: '¿Puedo generar un GCODE con esta herramienta?', a: 'No: generar GCODE requiere laminar el modelo 3D con un programa como Cura o PrusaSlicer. Esta herramienta sirve para analizar archivos que ya tengas y estimar su tiempo, peso y coste.' },
+      { q: '¿Los cálculos son precisos?', a: 'Con un GCODE con metadatos los datos de tiempo y filamento son exactos (los calcula tu laminador). El coste es una estimación que depende del precio del material, de la electricidad y del consumo de tu impresora.' },
+    ],
+    related: ['calculadora-impresion-3d', 'calculadora-gasto-electrico', 'precio-de-la-luz', 'calculadora-porcentaje'],
+    keywords: ['analizar gcode online', 'leer archivo gcode', 'estimador gcode', 'calcular tiempo impresion gcode', 'cuanto filamento usa mi pieza', 'filamento usado gcode', 'peso pieza stl', 'calcular volumen stl', 'stl a gramos', 'estimador impresion 3d', 'calcular peso impresion 3d', 'tiempo de impresion estimado', 'gcode analyser', 'cuanto tarda en imprimir', 'calculadora filamento gcode', 'analizador stl online', 'medir archivo stl', 'coste impresion gcode', 'analizar stl gratis', 'leer gcode gratis', 'cuanto pesa mi pieza impresa', 'estimacion tiempo impresora 3d'],
   },
 ];
 

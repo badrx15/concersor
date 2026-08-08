@@ -28,6 +28,7 @@ import { DiscountCalculatorWidget } from './widgets/discount-calculator';
 import { PrecioLuzWidget } from './widgets/precio-luz';
 import { CalculadoraGastoWidget } from './widgets/calculadora-gasto';
 import { Impresion3DWidget } from './widgets/calculadora-impresion-3d';
+import { AnalizadorGcodeWidget } from './widgets/analizador-gcode';
 
 // Skeleton para widgets lazy
 function WidgetSkeleton() {
@@ -114,6 +115,8 @@ export function ConverterWidget({ converter }: Props) {
       return <CalculadoraGastoWidget />;
     case 'impresion-3d':
       return <Impresion3DWidget />;
+    case 'gcode-estimator':
+      return <AnalizadorGcodeWidget />;
     case 'utility-tools':
       return <UtilityToolsWidget tool={(converter.widgetConfig?.tool as any) || 'markdown'} />;
     default:
