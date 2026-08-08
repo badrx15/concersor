@@ -225,7 +225,7 @@ export function analyzeGcode(text: string): GcodeAnalysis {
   return {
     kind: 'gcode',
     timeSeconds,
-    timeMethod: timeMethod === 'none' ? (timeSeconds != null ? 'estimated' : 'none') : timeMethod,
+    timeMethod,
     filamentMm: filamentMmMeta ?? (calculatedE > 0 ? calculatedE : null),
     filamentGramsMeta,
     filamentMethod: filamentMmMeta != null || filamentGramsMeta != null ? 'metadata' : calculatedE > 0 ? 'calculated' : 'none',

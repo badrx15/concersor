@@ -207,7 +207,7 @@ export function AnalizadorGcodeWidget() {
                     ? `${(analysis as GcodeAnalysis).layerHeightMm} mm`
                     : undefined
                 )}
-                {statCard('📂', 'Método', (analysis as GcodeAnalysis).filamentMethod === 'metadata' ? 'Metadatos' : 'Estimado')}
+                {statCard('📂', 'Método', (analysis as GcodeAnalysis).filamentMethod === 'metadata' ? 'Metadatos' : (analysis as GcodeAnalysis).filamentMethod === 'calculated' ? 'Estimado' : 'N/D')}
               </>
             ) : (
               <>
