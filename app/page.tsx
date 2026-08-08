@@ -578,6 +578,53 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ================================================================ */}
+      {/* ALL CONVERTERS — enlaces directos a todas las herramientas (SEO) */}
+      {/* ================================================================ */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="rounded-3xl border border-slate-800/80 bg-slate-900/40 p-8 sm:p-10">
+          <div className="text-center mb-10">
+            <span className="text-sm font-semibold text-brand-400 uppercase tracking-widest">Índice completo</span>
+            <h2 className="text-2xl sm:text-3xl font-bold mt-3">Todas las herramientas gratis</h2>
+            <p className="text-slate-400 mt-2">
+              {CONVERTERS.length} conversores y calculadoras accesibles desde aquí, sin registro
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {CATEGORIES.map((cat) => {
+              const items = getConvertersByCategory(cat.id);
+              return (
+                <div key={cat.id}>
+                  <Link
+                    href={`/categoria/${cat.id}`}
+                    className="inline-flex items-center gap-2 text-sm font-bold mb-3 hover:opacity-80 transition"
+                    style={{ color: cat.color }}
+                  >
+                    <span>{cat.icon}</span>
+                    {cat.name}
+                    <span className="text-slate-500 font-normal">({items.length})</span>
+                  </Link>
+                  <ul className="space-y-1">
+                    {items.map((c) => (
+                      <li key={c.slug}>
+                        <Link
+                          href={`/conversor/${c.slug}`}
+                          className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition group py-0.5"
+                        >
+                          <span className="shrink-0">{c.icon}</span>
+                          <span className="truncate group-hover:translate-x-0.5 transition-transform">{c.name}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

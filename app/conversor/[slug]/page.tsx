@@ -74,9 +74,21 @@ export default async function ConverterPage({
     })),
   };
 
+  // Schema.org BreadcrumbList
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: siteConfig.url },
+      { '@type': 'ListItem', position: 2, name: 'Conversores', item: `${siteConfig.url}/conversores` },
+      { '@type': 'ListItem', position: 3, name: cat.name, item: `${siteConfig.url}/categoria/${converter.category}` },
+      { '@type': 'ListItem', position: 4, name: converter.name, item: `${siteConfig.url}/conversor/${converter.slug}` },
+    ],
+  };
+
   return (
     <div className="view-fade">
-      <JsonLd data={[webAppLd, faqLd]} />
+      <JsonLd data={[webAppLd, faqLd, breadcrumbLd]} />
 
       {/* Breadcrumb */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">

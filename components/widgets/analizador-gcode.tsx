@@ -6,8 +6,10 @@ import { FileDrop, InputGroup, formatBytes } from './shared';
 import {
   analyzeGcode,
   analyzeStl,
+  analyze3mf,
   type GcodeAnalysis,
   type StlAnalysis,
+  type ThreeMfAnalysis,
   FILAMENT_AREA_MM2,
   formatTime,
 } from '@/lib/gcode-estimator';
@@ -22,7 +24,7 @@ const NOZZLE_W = 0.4;
 const eur = (n: number) =>
   n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
 
-type Analysis = GcodeAnalysis | StlAnalysis;
+type Analysis = GcodeAnalysis | StlAnalysis | ThreeMfAnalysis;
 
 function statCard(icon: string, label: string, value: ReactNode, sub?: string) {
   return (
@@ -66,19 +68,27 @@ export function AnalizadorGcodeWidget() {
       const ext = (f.name.split('.').pop() || '').toLowerCase();
       if (ext === 'stl') {
         setAnalysis(analyzeStl(await f.arrayBuffer()));
+      } else if (ext === '3mf' || ext === '3dmodel') {
+        setAnalysis(await analyze3mf(await f.arrayBuffer()));
       } else if (ext === 'gcode' || ext === 'gco' || ext === 'g') {
         setAnalysis(analyzeGcode(await f.text()));
       } else {
         // Autodetección por contenido
-        const head = await f.slice(0, 500).text();
-        if (/solid|facet\s+normal/i.test(head)) {
-          setAnalysis(analyzeStl(await f.arrayBuffer()));
+        const head = await f.slice(0, 4).text();
+        if (head.startsWith('PK')) {
+          // ZIP → probablemente 3MF
+          setAnalysis(await analyze3mf(await f.arrayBuffer()));
         } else {
-          setAnalysis(analyzeGcode(await f.text()));
+          const text = await f.slice(0, 500).text();
+          if (/solid|facet\s+normal/i.test(text)) {
+            setAnalysis(analyzeStl(await f.arrayBuffer()));
+          } else {
+            setAnalysis(analyzeGcode(await f.text()));
+          }
         }
       }
     } catch {
-      setError('No se pudo analizar el archivo. Asegúrate de que sea un .gcode o .stl válido.');
+      setError('No se pudo analizar el archivo. Asegúrate de que sea un .gcode, .stl o .3mf válido.');
     } finally {
       setAnalyzing(false);
     }
@@ -161,8 +171,8 @@ export function AnalizadorGcodeWidget() {
     <div className="space-y-4">
       {/* Subida de archivo */}
       <FileDrop
-        accept=".gcode,.gco,.g,.stl"
-        label="Sube tu archivo .gcode o .stl"
+        accept=".gcode,.gco,.g,.stl,.3mf"
+        label="Sube tu archivo .gcode, .stl o .3mf"
         onFiles={handleFiles}
       />
       {file && (
@@ -303,7 +313,7 @@ export function AnalizadorGcodeWidget() {
                   <span className="text-sm font-semibold text-slate-300 w-9 text-right tabular-nums">{failRate}%</span>
                 </div>
               </InputGroup>
-              {analysis?.kind === 'stl' && (
+              {analysis?.kind !== 'gcode' && (
                 <InputGroup
                   label={`Relleno: ${infill}%`}
                   tooltip="El porcentaje de relleno interior (infill). A más relleno, más peso y más tiempo."
@@ -356,7 +366,7 @@ export function AnalizadorGcodeWidget() {
             💡 <strong className="text-slate-200">Consejo:</strong> los laminadores (Cura, PrusaSlicer, OrcaSlicer) guardan en el
             .gcode el tiempo y el filamento exactos como comentarios. Si tu archivo los incluye, los resultados son muy precisos.
             En caso contrario se hace una <strong className="text-slate-200">estimación</strong> analizando los movimientos del
-            cabezal. Para generar el .gcode necesitas un laminador: sube tu modelo .stl aquí solo para estimar su coste.
+            cabezal. También acepta modelos .stl y .3mf (el formato de Windows 3D Builder y PrusaSlicer) para calcular su volumen y peso.
           </div>
         </>
       )}

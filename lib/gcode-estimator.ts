@@ -43,6 +43,28 @@ export interface StlAnalysis {
   sizeMm: { x: number; y: number; z: number };
 }
 
+export interface ThreeMfAnalysis {
+  kind: '3mf';
+  method: 'zip';
+  triangles: number;
+  vertices: number;
+  /** Volumen del sólido en mm³ (valor absoluto) */
+  volumeMm3: number;
+  sizeMm: { x: number; y: number; z: number };
+  /** Unidad declarada en el archivo */
+  unit: string;
+}
+
+// Escala a milímetros según la unidad declarada en el <model> 3MF
+const UNIT_SCALE_MM: Record<string, number> = {
+  micron: 0.001,
+  millimeter: 1,
+  centimeter: 10,
+  inch: 25.4,
+  foot: 304.8,
+  meter: 1000,
+};
+
 // ============================================================
 // HELPERS
 // ============================================================
@@ -345,6 +367,101 @@ export function analyzeStl(buffer: ArrayBuffer): StlAnalysis {
       y: maxY - minY,
       z: maxZ - minZ,
     },
+  };
+}
+
+// ============================================================
+// 3MF
+// ============================================================
+
+/**
+ * Analiza un archivo 3MF (ZIP con 3D/3dmodel.model en XML).
+ * Calcula volumen y caja delimitadora con la misma descomposición en tetraedros.
+ */
+export async function analyze3mf(buffer: ArrayBuffer): Promise<ThreeMfAnalysis> {
+  const JSZip = (await import('jszip')).default;
+  const zip = await JSZip.loadAsync(buffer);
+  const modelFile = zip.file('3D/3dmodel.model') || zip.file('3d/3dmodel.model');
+  if (!modelFile) throw new Error('No se encontró 3D/3dmodel.model en el archivo 3MF');
+  const xml = await modelFile.async('string');
+
+  const unitMatch = xml.match(/<model[^>]*unit="([^"]+)"/);
+  const unit = unitMatch ? unitMatch[1].toLowerCase() : 'millimeter';
+  const scale = UNIT_SCALE_MM[unit] ?? 1;
+
+  let volume = 0;
+  let minX = Infinity;
+  let minY = Infinity;
+  let minZ = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+  let maxZ = -Infinity;
+  let vertexCount = 0;
+  let triangleCount = 0;
+
+  const vRe = /<vertex\s+x="([-\d.eE+]+)"\s+y="([-\d.eE+]+)"\s+z="([-\d.eE+]+)"\s*\/?>/g;
+  const tRe = /<triangle\s+v1="(\d+)"\s+v2="(\d+)"\s+v3="(\d+)"\s*\/?>/g;
+
+  // 3MF permite varios objetos, y los índices de <triangle> son relativos a
+  // la <mesh> de su objeto. Se procesa cada <mesh> con su propio offset.
+  const meshRe = /<mesh\b[^>]*>([\s\S]*?)<\/mesh\s*>/g;
+  let meshMatch: RegExpExecArray | null;
+  while ((meshMatch = meshRe.exec(xml))) {
+    const meshXml = meshMatch[1];
+    // Vértices locales de esta mesh (índices de triángulo relativos a ella)
+    const localVerts: number[] = [];
+    vRe.lastIndex = 0;
+    let m: RegExpExecArray | null;
+    while ((m = vRe.exec(meshXml))) {
+      localVerts.push(parseFloat(m[1]) * scale, parseFloat(m[2]) * scale, parseFloat(m[3]) * scale);
+    }
+    if (localVerts.length === 0) continue;
+    vertexCount += localVerts.length / 3;
+
+    tRe.lastIndex = 0;
+    while ((m = tRe.exec(meshXml))) {
+      const i1 = parseInt(m[1], 10) * 3;
+      const i2 = parseInt(m[2], 10) * 3;
+      const i3 = parseInt(m[3], 10) * 3;
+      if (i3 + 2 >= localVerts.length) continue; // índice fuera de rango
+      const v0x = localVerts[i1];
+      const v0y = localVerts[i1 + 1];
+      const v0z = localVerts[i1 + 2];
+      const v1x = localVerts[i2];
+      const v1y = localVerts[i2 + 1];
+      const v1z = localVerts[i2 + 2];
+      const v2x = localVerts[i3];
+      const v2y = localVerts[i3 + 1];
+      const v2z = localVerts[i3 + 2];
+      volume +=
+        (v0x * (v1y * v2z - v1z * v2y) +
+          v0y * (v1z * v2x - v1x * v2z) +
+          v0z * (v1x * v2y - v1y * v2x)) /
+        6;
+      triangleCount++;
+      for (const [vx, vy, vz] of [
+        [v0x, v0y, v0z],
+        [v1x, v1y, v1z],
+        [v2x, v2y, v2z],
+      ]) {
+        if (vx < minX) minX = vx;
+        if (vy < minY) minY = vy;
+        if (vz < minZ) minZ = vz;
+        if (vx > maxX) maxX = vx;
+        if (vy > maxY) maxY = vy;
+        if (vz > maxZ) maxZ = vz;
+      }
+    }
+  }
+
+  return {
+    kind: '3mf',
+    method: 'zip',
+    triangles: triangleCount,
+    vertices: vertexCount,
+    volumeMm3: Math.abs(volume),
+    sizeMm: { x: maxX - minX, y: maxY - minY, z: maxZ - minZ },
+    unit,
   };
 }
 
