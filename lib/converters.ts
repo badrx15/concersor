@@ -132,19 +132,24 @@ export const CONVERTERS: Converter[] = [
     color: '#3b82f6',
     widget: 'unit-converter',
     widgetConfig: { unitCategory: 'length', defaultFrom: 'kilometro', defaultTo: 'milla' },
-    metaTitle: 'Kilómetros a Millas — Conversor online gratis | ConversorPro',
+    metaTitle: 'Kilómetros a Millas (km a mi) — Conversor online gratis | ConversorPro',
     metaDescription:
-      'Convierte kilómetros a millas (y viceversa) al instante. Tabla de equivalencias, fórmula y FAQ. Gratis, sin registro, 100% preciso.',
+      'Convierte kilómetros a millas al instante: calculadora km a mi, fórmula (km × 0,621371), tabla de equivalencias y FAQ. Gratis, sin registro y 100% preciso.',
     explanation: [
       'Un kilómetro equivale a 0,621371 millas. Para convertir kilómetros a millas, multiplica el valor en kilómetros por 0,621371. Por ejemplo, 10 km × 0,621371 = 6,21371 millas.',
       'La milla terrestre o milla estatutaria (statute mile) se usa en países anglosajones como Estados Unidos y Reino Unido, mientras que el kilómetro es la unidad estándar en la mayoría del mundo. Esta conversión es útil al viajar, interpretar velocidades en carretera o comparar distancias en mapas.',
+      'Para una conversión rápida de km a millas sin calculadora: divide los kilómetros entre 1,6. Por ejemplo, 10 km ÷ 1,6 = 6,25 millas (el valor exacto es 6,21). Esta regla mental es útil al volante o corriendo.',
+      'También se usa en velocidad: 100 km/h equivalen a unas 62 mph (millas por hora). La calculadora de esta página convierte tanto distancias como velocidades entre km y millas.',
     ],
     equivalences: [
       { from: '1 km', to: '0,621371 mi' },
+      { from: '2 km', to: '1,24274 mi' },
       { from: '5 km', to: '3,10686 mi' },
+      { from: '8 km', to: '4,97097 mi' },
       { from: '10 km', to: '6,21371 mi' },
       { from: '21,0975 km', to: '13,1094 mi (media maratón)' },
       { from: '42,195 km', to: '26,2188 mi (maratón)' },
+      { from: '50 km', to: '31,0686 mi' },
       { from: '100 km', to: '62,1371 mi' },
     ],
     faq: [
@@ -153,8 +158,16 @@ export const CONVERTERS: Converter[] = [
         a: 'Un kilómetro equivale a 0,621371 millas. Para una conversión rápida, puedes dividir los kilómetros entre 1,609.',
       },
       {
+        q: '¿Cuántas millas son 10 kilómetros?',
+        a: '10 kilómetros equivalen a 6,21371 millas (6,21 millas redondeando). Es una distancia habitual en carreras populares y rutas de running.',
+      },
+      {
         q: '¿Cuál es la fórmula para convertir km a millas?',
-        a: 'millas = kilómetros × 0,621371. También puedes usar: millas = kilómetros ÷ 1,609344.',
+        a: 'millas = kilómetros × 0,621371. También puedes usar: millas = kilómetros ÷ 1,609344. Para pasar de millas a km, invierte la operación: km = millas × 1,609344.',
+      },
+      {
+        q: '¿Cómo paso de km/h a mph?',
+        a: 'Multiplica la velocidad en km/h por 0,621371. Por ejemplo, 120 km/h × 0,621371 = 74,56 mph. La conversión es la misma que para distancias.',
       },
       {
         q: '¿Es lo mismo milla náutica que milla terrestre?',
@@ -162,7 +175,7 @@ export const CONVERTERS: Converter[] = [
       },
     ],
     related: ['millas-a-kilometros', 'metros-a-pies', 'cm-a-pulgadas'],
-    keywords: ['kilometros a millas', 'km a mi', 'convertir km a millas', 'conversion kilometros millas', 'pasar km a millas', 'cuantas millas son 1 km', 'distancia km a mi', 'calcular millas', 'kilometros a millas calculadora', 'tabla km a millas'],
+    keywords: ['kilometros a millas', 'km a millas', 'convertir km a millas', 'conversion kilometros millas', 'pasar km a millas', 'cuantas millas son 1 km', 'cuantas millas son 10 km', 'distancia km a mi', 'calcular millas', 'kilometros a millas calculadora', 'tabla km a millas', 'de kilometros a millas', 'pasar kilometros a millas', 'convertir kilometros a millas', 'km a mi', 'velocidad km a millas', 'regla km millas', 'millas por hora km'],
   },
   {
     slug: 'millas-a-kilometros',
@@ -556,22 +569,35 @@ export const CONVERTERS: Converter[] = [
     color: '#22c55e',
     widget: 'currency-converter',
     widgetConfig: { defaultFrom: 'EUR', defaultTo: 'USD' },
-    metaTitle: 'Euros a Dólares (EUR → USD) — Conversor de divisa en vivo | ConversorPro',
+    metaTitle: 'Euros a Dólares (EUR a USD) — Cambio de euro a dólar en vivo | ConversorPro',
     metaDescription:
-      'Convierte euros a dólares estadounidenses con tasas de cambio en tiempo real. Gratis, rápido y actualizado. Tabla y FAQ.',
+      'Convierte euros a dólares al instante con el tipo de cambio actual. Calculadora EUR a USD, tabla de equivalencias y FAQ. Gratis y en tiempo real.',
     explanation: [
       'El euro (EUR) es la moneda oficial de 20 países de la Eurozona. El dólar estadounidense (USD) es la moneda más usada en el comercio internacional. El tipo de cambio entre ambas fluctúa constantemente según el mercado de divisas.',
       'Este conversor usa tasas de cambio en tiempo real obtenidas de APIs públicas y se actualizan periódicamente. Para transacciones reales, consulta siempre con tu banco, ya que aplican un margen o comisión.',
+      'Por ejemplo, si el tipo de cambio es de 1 EUR = 1,08 USD, entonces 100 euros son 108 dólares, 500 euros son 540 dólares y 1000 euros son 1080 dólares. El cambio de euro a dólar se mueve a lo largo del día según la oferta y la demanda en el mercado de divisas (forex).',
+      'Para calcular euros a dólares de forma rápida: multiplica la cantidad en euros por el tipo de cambio EUR/USD. Este conversor hace ese cálculo automáticamente con la cotización actualizada.',
     ],
     equivalences: [
       { from: '1 EUR', to: '≈ 1,08 USD (aproximado)' },
+      { from: '5 EUR', to: '≈ 5,40 USD' },
       { from: '10 EUR', to: '≈ 10,80 USD' },
+      { from: '20 EUR', to: '≈ 21,60 USD' },
       { from: '50 EUR', to: '≈ 54 USD' },
       { from: '100 EUR', to: '≈ 108 USD' },
+      { from: '200 EUR', to: '≈ 216 USD' },
       { from: '500 EUR', to: '≈ 540 USD' },
       { from: '1000 EUR', to: '≈ 1080 USD' },
     ],
     faq: [
+      {
+        q: '¿Cuántos dólares son 100 euros?',
+        a: 'Depende del tipo de cambio del día. Si 1 EUR = 1,08 USD, entonces 100 euros son 108 dólares. Usa el conversor de esta página para ver la cotización actualizada al momento.',
+      },
+      {
+        q: '¿Cómo calculo euros a dólares?',
+        a: 'Multiplica la cantidad en euros por el tipo de cambio EUR/USD. Por ejemplo, 250 € × 1,08 = 270 $. El conversor de esta página hace el cálculo automáticamente con la tasa en tiempo real.',
+      },
       {
         q: '¿La tasa de cambio es exacta?',
         a: 'Las tasas se obtienen de APIs públicas de tipo de cambio (exchangerate.host, frankfurter.app) y se actualizan periódicamente. Son orientativas; tu banco puede aplicar un margen.',
@@ -581,12 +607,16 @@ export const CONVERTERS: Converter[] = [
         a: 'El servidor cachea las tasas durante varias horas para no saturar la API. El resultado muestra la fecha y hora de la última actualización.',
       },
       {
+        q: '¿Por qué cambia el euro frente al dólar cada día?',
+        a: 'El tipo de cambio EUR/USD lo mueven los bancos centrales (BCE y Reserva Federal), los tipos de interés, la inflación, los datos económicos y el comercio internacional. Es el par de divisas más negociado del mundo.',
+      },
+      {
         q: '¿Puedo convertir otras monedas?',
-        a: 'Sí. Visita nuestro conversor de divisas general para ver todas las monedas disponibles.',
+        a: 'Sí. Visita nuestro conversor de divisas general para ver todas las monedas disponibles, o usa los conversores relacionados de esta página.',
       },
     ],
     related: ['dolares-a-euros', 'conversor-divisas', 'libras-a-euros'],
-    keywords: ['euros a dolares', 'EUR a USD', 'convertir euros a dolares', 'cambio euro dolar', 'pasar euros a dolares', 'cuantos dolares son 100 euros', 'euro dolar hoy', 'cotizacion euro dolar', 'tipo de cambio euro dolar', 'calculadora euros dolares'],
+    keywords: ['euros a dolares', 'EUR a USD', 'convertir euros a dolares', 'cambio euro dolar', 'cambio de euro a dolar', 'de euros a dolares', 'cambio de euros a dolares', 'pasar euros a dolares', 'cuantos dolares son 100 euros', 'cuanto son 100 euros en dolares', 'euro dolar hoy', 'cotizacion euro dolar', 'tipo de cambio euro dolar', 'calculadora euros dolares', 'euro a dolares hoy', 'conversion euros a dolares', 'tabla euros dolares'],
   },
   {
     slug: 'dolares-a-euros',
